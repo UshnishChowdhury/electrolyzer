@@ -47,20 +47,20 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 23; 1280, 634]
+    Location      [0, 26; 1280, 636]
     ZoomFactor    1.71498
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
       Type          Subsystem
-      Name          "Pressure correction"
+      Name          "Open circuit voltage"
       Show          on
-      Position      [365, 160]
+      Position      [160, 100]
       Direction     up
       Flipped       off
       LabelPosition south
-      Frame         [-30, -30; 30, 30]
+      Frame         [-30, -35; 30, 35]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -70,40 +70,45 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Input
-        Position      [-30, -15]
+        Position      [-30, -20]
         Direction     left
       }
       Terminal {
         Type          Input
-        Position      [-30, -5]
+        Position      [-30, -10]
         Direction     left
       }
       Terminal {
         Type          Input
-        Position      [-30, 5]
+        Position      [-30, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-30, 10]
         Direction     left
       }
       Terminal {
         Type          Output
-        Position      [34, -15]
+        Position      [34, -25]
         Direction     right
       }
       Terminal {
         Type          Input
-        Position      [-30, 15]
+        Position      [-30, 20]
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 630]
-        ZoomFactor    1
-        SliderPosition [-1, 61]
+        Location      [0, 26; 1280, 627]
+        ZoomFactor    1.71498
+        SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
         Component {
           Type          Input
           Name          "p_cat"
           Show          on
-          Position      [25, 55]
+          Position      [50, 80]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -122,7 +127,7 @@ Plecs {
           Type          Input
           Name          "p_an"
           Show          on
-          Position      [25, 105]
+          Position      [50, 130]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -141,7 +146,7 @@ Plecs {
           Type          Input
           Name          "p_sv"
           Show          on
-          Position      [25, 160]
+          Position      [50, 185]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -160,7 +165,7 @@ Plecs {
           Type          Sum
           Name          "Subtract"
           Show          off
-          Position      [105, 60]
+          Position      [130, 85]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -184,7 +189,7 @@ Plecs {
           Type          Sum
           Name          "Subtract1"
           Show          off
-          Position      [105, 110]
+          Position      [130, 135]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -208,7 +213,7 @@ Plecs {
           Type          Product
           Name          "Product1"
           Show          off
-          Position      [145, 60]
+          Position      [200, 85]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -229,43 +234,10 @@ Plecs {
           }
         }
         Component {
-          Type          Math
-          Name          "Math"
-          Show          on
-          Position      [230, 60]
-          Direction     up
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Operator"
-            Value         "2"
-            Show          off
-          }
-        }
-        Component {
-          Type          Output
-          Name          "p_cor"
-          Show          on
-          Position      [410, 65]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Index"
-            Value         "4"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
           Type          Product
           Name          "Divide"
           Show          off
-          Position      [305, 65]
+          Position      [295, 90]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -289,7 +261,7 @@ Plecs {
           Type          Math
           Name          "Math1"
           Show          on
-          Position      [230, 120]
+          Position      [230, 200]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -303,7 +275,7 @@ Plecs {
           Type          Constant
           Name          "power"
           Show          on
-          Position      [170, 170]
+          Position      [170, 240]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -323,13 +295,658 @@ Plecs {
           Type          Input
           Name          "p_o"
           Show          on
-          Position      [170, 115]
+          Position      [170, 195]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Math
+          Name          "Math3"
+          Show          on
+          Position      [360, 90]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Operator"
+            Value         "4"
+            Show          off
+          }
+        }
+        Component {
+          Type          Subsystem
+          Name          "f"
+          Show          on
+          Position      [360, 170]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Frame         [-20, -20; 20, 20]
+          SampleTime    "-1"
+          CodeGenDiscretizationMethod "2"
+          CodeGenTarget "Generic"
+          MaskDisplayLang "2"
+          MaskIconFrame on
+          MaskIconOpaque off
+          MaskIconRotates on
+          Terminal {
+            Type          Input
+            Position      [-20, -5]
+            Direction     left
+          }
+          Terminal {
+            Type          Output
+            Position      [24, -10]
+            Direction     right
+          }
+          Schematic {
+            Location      [0, 26; 1280, 629]
+            ZoomFactor    1.96257
+            SliderPosition [0, 0]
+            ShowBrowser   off
+            BrowserWidth  100
+            Component {
+              Type          Input
+              Name          "T"
+              Show          on
+              Position      [40, 110]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "1"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "F"
+              Show          on
+              Position      [40, 190]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product1"
+              Show          off
+              Position      [100, 70]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product2"
+              Show          off
+              Position      [100, 150]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Divide"
+              Show          off
+              Position      [185, 75]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "*/"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Output
+              Name          "f"
+              Show          on
+              Position      [245, 75]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "2"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "R"
+              Show          on
+              Position      [40, 70]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "8.314"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "n_e"
+              Show          on
+              Position      [40, 150]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "T"
+              SrcTerminal   1
+              Points        [100, 110]
+              DstComponent  "Product1"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product1"
+              SrcTerminal   1
+              DstComponent  "Divide"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "F"
+              SrcTerminal   1
+              Points        [100, 190]
+              DstComponent  "Product2"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product2"
+              SrcTerminal   1
+              Points        [150, 150; 150, 80]
+              DstComponent  "Divide"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Divide"
+              SrcTerminal   1
+              DstComponent  "f"
+              DstTerminal   1
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "R"
+              SrcTerminal   1
+              DstComponent  "Product1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "n_e"
+              SrcTerminal   1
+              DstComponent  "Product2"
+              DstTerminal   2
+            }
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-weight:600;"
+"\">Constants</span></p>\n<p>R = Universal gas constant, 8.314 J/mol</p>\n<p>n"
+"_e = Number of electrons transferred in a unit electrochemical reaction, 2</p"
+">\n<p>F = Faraday's constant, 96485 C/mol = 1 F</p>\n<p> </p>\n<p><span style"
+"=\" font-weight:600;\">Variables</span></p>\n<p>T = Temperature</p></body></h"
+"tml>"
+              Position      [375, 170]
+            } 
+          }
+        }
+        Component {
+          Type          Product
+          Name          "Product2"
+          Show          off
+          Position      [415, 90]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "|**"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Sum"
+          Show          off
+          Position      [495, 90]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "|++"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "U_ocv"
+          Show          on
+          Position      [570, 90]
           Direction     right
           Flipped       off
           LabelPosition south
           Parameter {
             Variable      "Index"
             Value         "5"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Subsystem
+          Name          "U_o"
+          Show          on
+          Position      [445, 170]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Frame         [-20, -20; 20, 20]
+          SampleTime    "-1"
+          CodeGenDiscretizationMethod "2"
+          CodeGenTarget "Generic"
+          MaskDisplayLang "2"
+          MaskIconFrame on
+          MaskIconOpaque off
+          MaskIconRotates on
+          Terminal {
+            Type          Output
+            Position      [24, -10]
+            Direction     right
+          }
+          Schematic {
+            Location      [0, 23; 1280, 634]
+            ZoomFactor    1.71498
+            SliderPosition [-1, 0]
+            ShowBrowser   off
+            BrowserWidth  100
+            Component {
+              Type          Constant
+              Name          "F"
+              Show          on
+              Position      [70, 220]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product1"
+              Show          off
+              Position      [195, 75]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product2"
+              Show          off
+              Position      [125, 180]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Output
+              Name          "U_o"
+              Show          on
+              Position      [255, 75]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "1"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant"
+              Show          on
+              Position      [70, 75]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "-159.6"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant2"
+              Show          on
+              Position      [70, 120]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "2.8472 * 10e5"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Sum"
+              Show          off
+              Position      [125, 75]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|++"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "n_e"
+              Show          on
+              Position      [70, 180]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product1"
+              SrcTerminal   1
+              DstComponent  "U_o"
+              DstTerminal   1
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "n_e"
+              SrcTerminal   1
+              DstComponent  "Product2"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "F"
+              SrcTerminal   1
+              Points        [125, 220]
+              DstComponent  "Product2"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant2"
+              SrcTerminal   1
+              Points        [125, 120]
+              DstComponent  "Sum"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant"
+              SrcTerminal   1
+              DstComponent  "Sum"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Sum"
+              SrcTerminal   1
+              DstComponent  "Product1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product2"
+              SrcTerminal   1
+              Points        [195, 180]
+              DstComponent  "Product1"
+              DstTerminal   3
+            }
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-weight:600;"
+"\">Constants</span></p>\n<p>n_e = Number of electrons transferred in a unit e"
+"lectrochemical reaction, 2 </p>\n<p>F = Faraday's constant, 96485 C/mol = 1 F"
+"</p></body></html>"
+              Position      [435, 220]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-size:8px;\">"
+"Koponen et al. &quot;Effect of Power Quality on the Design of PEM Water Elect"
+"rolysis Systems&quot;, Applied Energy 279, 115791, 2020, https://doi.org/10.1"
+"016/j.apenergy.2020.115791</span></p></body></html>"
+              Position      [355, 30]
+            } 
+          }
+        }
+        Component {
+          Type          Math
+          Name          "Math"
+          Show          on
+          Position      [175, 135]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Operator"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "T"
+          Show          on
+          Position      [305, 165]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "6"
             Show          on
           }
           Parameter {
@@ -356,9 +973,9 @@ Plecs {
           Type          Signal
           SrcComponent  "p_sv"
           SrcTerminal   1
-          Points        [60, 160; 60, 115]
+          Points        [85, 185; 85, 140]
           Branch {
-            Points        [60, 65]
+            Points        [85, 90]
             DstComponent  "Subtract"
             DstTerminal   3
           }
@@ -376,38 +993,9 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "Subtract1"
-          SrcTerminal   1
-          Points        [145, 110]
-          DstComponent  "Product1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product1"
-          SrcTerminal   1
-          DstComponent  "Math"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Math"
-          SrcTerminal   1
-          DstComponent  "Divide"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Divide"
-          SrcTerminal   1
-          DstComponent  "p_cor"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "Math1"
           SrcTerminal   1
-          Points        [250, 70]
+          Points        [255, 200; 255, 95]
           DstComponent  "Divide"
           DstTerminal   3
         }
@@ -422,22 +1010,242 @@ Plecs {
           Type          Signal
           SrcComponent  "power"
           SrcTerminal   1
-          Points        [195, 170; 195, 125]
+          Points        [200, 240]
           DstComponent  "Math1"
           DstTerminal   3
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "Divide"
+          SrcTerminal   1
+          DstComponent  "Math3"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "f"
+          SrcTerminal   2
+          Points        [415, 160]
+          DstComponent  "Product2"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Math3"
+          SrcTerminal   1
+          DstComponent  "Product2"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Product2"
+          SrcTerminal   1
+          DstComponent  "Sum"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sum"
+          SrcTerminal   1
+          DstComponent  "U_ocv"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Product1"
+          SrcTerminal   1
+          DstComponent  "Divide"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Math"
+          SrcTerminal   1
+          Points        [200, 135]
+          DstComponent  "Product1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Subtract1"
+          SrcTerminal   1
+          DstComponent  "Math"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "U_o"
+          SrcTerminal   1
+          Points        [495, 160]
+          DstComponent  "Sum"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "T"
+          SrcTerminal   1
+          DstComponent  "f"
+          DstTerminal   1
+        }
         Annotation {
           Name          "<html><body>\n<p align=\"center\"><span style=\" font"
-"-weight:600;\">Pressure correction term of Nernst Equation</span></p></body><"
-"/html>"
-          Position      [135, 15]
+"-size:12px; font-weight:600;\">Open circuit voltage using Nernst Equation</sp"
+"an></p></body></html>"
+          Position      [155, 35]
         } 
         Annotation {
-          Name          "<html><body>\n<p>p_cat = Cathode pressure</p>\n<p>p_a"
-"n = Anode pressure</p>\n<p>p_sv = Saturation vapour pressure of pure water</p"
-">\n<p>p_o = Standard pressure reference</p></body></html>"
-          Position      [410, 165]
+          Name          "<html><body>\n<p><span style=\" font-weight:600;\">Va"
+"riables</span></p>\n<p>p_cat = Cathode pressure</p>\n<p>p_an = Anode pressure"
+"</p>\n<p>p_sv = Saturation vapour pressure of pure water</p>\n<p>p_o = Standa"
+"rd pressure reference</p>\n<p>T = Temperature</p></body></html>"
+          Position      [595, 265]
         } 
+        Annotation {
+          Name          "<html><body>\n<p>U_cor</p></body></html>"
+          Position      [450, 80]
+        } 
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Ohmic overvoltage"
+      Show          on
+      Position      [160, 205]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-30, -20; 30, 20]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-30, -5]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [34, -5]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-30, 5]
+        Direction     left
+      }
+      Schematic {
+        Location      [0, 26; 1280, 635]
+        ZoomFactor    1.96257
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "r"
+          Show          on
+          Position      [60, 80]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "U_ohm"
+          Show          on
+          Position      [195, 80]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "j"
+          Show          on
+          Position      [60, 125]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Product
+          Name          "Product1"
+          Show          off
+          Position      [120, 80]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "|**"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "r"
+          SrcTerminal   1
+          DstComponent  "Product1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "j"
+          SrcTerminal   1
+          Points        [120, 125]
+          DstComponent  "Product1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Product1"
+          SrcTerminal   1
+          DstComponent  "U_ohm"
+          DstTerminal   1
+        }
       }
     }
   }
