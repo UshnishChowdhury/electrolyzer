@@ -1,0 +1,444 @@
+Plecs {
+  Name          "PEM_electrolyzer"
+  Version       "4.7"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1.0"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 23; 1280, 634]
+    ZoomFactor    1.71498
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Subsystem
+      Name          "Pressure correction"
+      Show          on
+      Position      [365, 160]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-30, -30; 30, 30]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-30, -15]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-30, -5]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-30, 5]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [34, -15]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-30, 15]
+        Direction     left
+      }
+      Schematic {
+        Location      [0, 26; 1280, 630]
+        ZoomFactor    1
+        SliderPosition [-1, 61]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "p_cat"
+          Show          on
+          Position      [25, 55]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "p_an"
+          Show          on
+          Position      [25, 105]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "p_sv"
+          Show          on
+          Position      [25, 160]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Subtract"
+          Show          off
+          Position      [105, 60]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "+-"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Subtract1"
+          Show          off
+          Position      [105, 110]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "+-"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Product
+          Name          "Product1"
+          Show          off
+          Position      [145, 60]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "|**"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Math
+          Name          "Math"
+          Show          on
+          Position      [230, 60]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Operator"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "p_cor"
+          Show          on
+          Position      [410, 65]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Product
+          Name          "Divide"
+          Show          off
+          Position      [305, 65]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "*/"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Math
+          Name          "Math1"
+          Show          on
+          Position      [230, 120]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Operator"
+            Value         "5"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "power"
+          Show          on
+          Position      [170, 170]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-15, -10; 15, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "3/2"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "p_o"
+          Show          on
+          Position      [170, 115]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "5"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "p_cat"
+          SrcTerminal   1
+          DstComponent  "Subtract"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "p_an"
+          SrcTerminal   1
+          DstComponent  "Subtract1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "p_sv"
+          SrcTerminal   1
+          Points        [60, 160; 60, 115]
+          Branch {
+            Points        [60, 65]
+            DstComponent  "Subtract"
+            DstTerminal   3
+          }
+          Branch {
+            DstComponent  "Subtract1"
+            DstTerminal   3
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Subtract"
+          SrcTerminal   1
+          DstComponent  "Product1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Subtract1"
+          SrcTerminal   1
+          Points        [145, 110]
+          DstComponent  "Product1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Product1"
+          SrcTerminal   1
+          DstComponent  "Math"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Math"
+          SrcTerminal   1
+          DstComponent  "Divide"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Divide"
+          SrcTerminal   1
+          DstComponent  "p_cor"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Math1"
+          SrcTerminal   1
+          Points        [250, 70]
+          DstComponent  "Divide"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "p_o"
+          SrcTerminal   1
+          DstComponent  "Math1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "power"
+          SrcTerminal   1
+          Points        [195, 170; 195, 125]
+          DstComponent  "Math1"
+          DstTerminal   3
+        }
+        Annotation {
+          Name          "<html><body>\n<p align=\"center\"><span style=\" font"
+"-weight:600;\">Pressure correction term of Nernst Equation</span></p></body><"
+"/html>"
+          Position      [135, 15]
+        } 
+        Annotation {
+          Name          "<html><body>\n<p>p_cat = Cathode pressure</p>\n<p>p_a"
+"n = Anode pressure</p>\n<p>p_sv = Saturation vapour pressure of pure water</p"
+">\n<p>p_o = Standard pressure reference</p></body></html>"
+          Position      [410, 165]
+        } 
+      }
+    }
+  }
+}
