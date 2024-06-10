@@ -2703,7 +2703,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 635]
+            Location      [0, 26; 1280, 634]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -3836,8 +3836,15 @@ Plecs {
               Type          Signal
               SrcComponent  "T"
               SrcTerminal   1
-              DstComponent  "Antoine"
-              DstTerminal   2
+              Points        [65, 195]
+              Branch {
+                DstComponent  "Antoine"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Balej"
+                DstTerminal   1
+              }
             }
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-size:16px; f"
