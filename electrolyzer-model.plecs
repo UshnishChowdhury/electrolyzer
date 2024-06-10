@@ -79,7 +79,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 623]
+        Location      [0, 23; 1280, 634]
         ZoomFactor    1.71498
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -88,11 +88,11 @@ Plecs {
           Type          Subsystem
           Name          "f"
           Show          on
-          Position      [325, 170]
+          Position      [325, 155]
           Direction     up
           Flipped       off
           LabelPosition south
-          Frame         [-20, -20; 20, 20]
+          Frame         [-20, -30; 20, 30]
           SampleTime    "-1"
           CodeGenDiscretizationMethod "2"
           CodeGenTarget "Generic"
@@ -101,45 +101,21 @@ Plecs {
           MaskIconOpaque off
           MaskIconRotates on
           Terminal {
-            Type          Input
-            Position      [-20, -5]
-            Direction     left
-          }
-          Terminal {
             Type          Output
             Position      [24, -10]
             Direction     right
           }
           Schematic {
-            Location      [0, 26; 1280, 626]
+            Location      [0, 26; 1280, 625]
             ZoomFactor    1.96257
             SliderPosition [0, 0]
             ShowBrowser   off
             BrowserWidth  100
             Component {
-              Type          Input
-              Name          "T"
-              Show          on
-              Position      [40, 110]
-              Direction     right
-              Flipped       off
-              LabelPosition south
-              Parameter {
-                Variable      "Index"
-                Value         "1"
-                Show          on
-              }
-              Parameter {
-                Variable      "Width"
-                Value         "-1"
-                Show          off
-              }
-            }
-            Component {
               Type          Constant
               Name          "F"
               Show          on
-              Position      [40, 190]
+              Position      [40, 185]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -157,33 +133,9 @@ Plecs {
             }
             Component {
               Type          Product
-              Name          "Product1"
-              Show          off
-              Position      [100, 70]
-              Direction     up
-              Flipped       off
-              LabelPosition south
-              Parameter {
-                Variable      "IconShape"
-                Value         "2"
-                Show          off
-              }
-              Parameter {
-                Variable      "Inputs"
-                Value         "|**"
-                Show          off
-              }
-              Parameter {
-                Variable      "DataType"
-                Value         "10"
-                Show          off
-              }
-            }
-            Component {
-              Type          Product
               Name          "Product2"
               Show          off
-              Position      [100, 150]
+              Position      [105, 135]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -207,7 +159,7 @@ Plecs {
               Type          Product
               Name          "Divide"
               Show          off
-              Position      [185, 75]
+              Position      [150, 75]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -231,13 +183,13 @@ Plecs {
               Type          Output
               Name          "f"
               Show          on
-              Position      [245, 75]
+              Position      [215, 75]
               Direction     right
               Flipped       off
               LabelPosition south
               Parameter {
                 Variable      "Index"
-                Value         "2"
+                Value         "1"
                 Show          on
               }
               Parameter {
@@ -270,7 +222,7 @@ Plecs {
               Type          Constant
               Name          "n_e"
               Show          on
-              Position      [40, 150]
+              Position      [40, 135]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -288,24 +240,9 @@ Plecs {
             }
             Connection {
               Type          Signal
-              SrcComponent  "T"
-              SrcTerminal   1
-              Points        [100, 110]
-              DstComponent  "Product1"
-              DstTerminal   3
-            }
-            Connection {
-              Type          Signal
-              SrcComponent  "Product1"
-              SrcTerminal   1
-              DstComponent  "Divide"
-              DstTerminal   2
-            }
-            Connection {
-              Type          Signal
               SrcComponent  "F"
               SrcTerminal   1
-              Points        [100, 190]
+              Points        [105, 185]
               DstComponent  "Product2"
               DstTerminal   3
             }
@@ -313,7 +250,6 @@ Plecs {
               Type          Signal
               SrcComponent  "Product2"
               SrcTerminal   1
-              Points        [150, 150; 150, 80]
               DstComponent  "Divide"
               DstTerminal   3
             }
@@ -326,25 +262,23 @@ Plecs {
             }
             Connection {
               Type          Signal
-              SrcComponent  "R"
+              SrcComponent  "n_e"
               SrcTerminal   1
-              DstComponent  "Product1"
+              DstComponent  "Product2"
               DstTerminal   2
             }
             Connection {
               Type          Signal
-              SrcComponent  "n_e"
+              SrcComponent  "R"
               SrcTerminal   1
-              DstComponent  "Product2"
+              DstComponent  "Divide"
               DstTerminal   2
             }
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-weight:600;"
 "\">Constants</span></p>\n<p>R = Universal gas constant, 8.314 J/mol</p>\n<p>n"
 "_e = Number of electrons transferred in a unit electrochemical reaction, 2</p"
-">\n<p>F = Faraday's constant, 96485 C/mol = 1 F</p>\n<p> </p>\n<p><span style"
-"=\" font-weight:600;\">Variables</span></p>\n<p>T = Temperature</p></body></h"
-"tml>"
+">\n<p>F = Faraday's constant, 96485 C/mol = 1 F</p></body></html>"
               Position      [375, 170]
             } 
           }
@@ -353,18 +287,18 @@ Plecs {
           Type          Product
           Name          "Product2"
           Show          off
-          Position      [370, 90]
+          Position      [395, 90]
           Direction     up
           Flipped       off
           LabelPosition south
           Parameter {
             Variable      "IconShape"
-            Value         "2"
+            Value         "1"
             Show          off
           }
           Parameter {
             Variable      "Inputs"
-            Value         "|**"
+            Value         "***"
             Show          off
           }
           Parameter {
@@ -377,7 +311,7 @@ Plecs {
           Type          Sum
           Name          "Sum"
           Show          off
-          Position      [495, 90]
+          Position      [480, 90]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -401,7 +335,7 @@ Plecs {
           Type          Output
           Name          "U_ocv"
           Show          on
-          Position      [570, 90]
+          Position      [545, 90]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -420,7 +354,7 @@ Plecs {
           Type          Subsystem
           Name          "U_o"
           Show          on
-          Position      [445, 180]
+          Position      [420, 155]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -2646,7 +2580,7 @@ Plecs {
           Type          Input
           Name          "T"
           Show          on
-          Position      [265, 250]
+          Position      [60, 205]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2665,7 +2599,7 @@ Plecs {
           Type          Subsystem
           Name          "Pressure correction (PEM)"
           Show          on
-          Position      [160, 120]
+          Position      [160, 110]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -2703,7 +2637,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 632]
+            Location      [0, 26; 1280, 630]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -2946,7 +2880,7 @@ Plecs {
               Type          Subsystem
               Name          "Antoine"
               Show          on
-              Position      [105, 200]
+              Position      [110, 200]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -3381,7 +3315,7 @@ Plecs {
               Type          Subsystem
               Name          "Balej"
               Show          on
-              Position      [105, 265]
+              Position      [110, 265]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -3753,21 +3687,6 @@ Plecs {
             }
             Connection {
               Type          Signal
-              SrcComponent  "Antoine"
-              SrcTerminal   1
-              Points        [150, 195; 150, 150]
-              Branch {
-                Points        [150, 100]
-                DstComponent  "Subtract"
-                DstTerminal   3
-              }
-              Branch {
-                DstComponent  "Subtract1"
-                DstTerminal   3
-              }
-            }
-            Connection {
-              Type          Signal
               SrcComponent  "Subtract"
               SrcTerminal   1
               DstComponent  "Product1"
@@ -3842,8 +3761,24 @@ Plecs {
                 DstTerminal   2
               }
               Branch {
+                Points        [65, 260]
                 DstComponent  "Balej"
                 DstTerminal   1
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Balej"
+              SrcTerminal   2
+              Points        [155, 260; 155, 150]
+              Branch {
+                Points        [155, 100]
+                DstComponent  "Subtract"
+                DstTerminal   3
+              }
+              Branch {
+                DstComponent  "Subtract1"
+                DstTerminal   3
               }
             }
             Annotation {
@@ -3857,7 +3792,7 @@ Plecs {
           Type          Subsystem
           Name          "Pressure correction (Alkaline)"
           Show          on
-          Position      [160, 250]
+          Position      [160, 270]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -5685,14 +5620,6 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "f"
-          SrcTerminal   2
-          Points        [370, 160]
-          DstComponent  "Product2"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "Product2"
           SrcTerminal   1
           DstComponent  "Sum"
@@ -5709,7 +5636,7 @@ Plecs {
           Type          Signal
           SrcComponent  "U_o"
           SrcTerminal   1
-          Points        [495, 160]
+          Points        [480, 135]
           DstComponent  "Sum"
           DstTerminal   3
         }
@@ -5719,6 +5646,43 @@ Plecs {
           SrcTerminal   4
           DstComponent  "Product2"
           DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "f"
+          SrcTerminal   1
+          Points        [350, 100]
+          DstComponent  "Product2"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "T"
+          SrcTerminal   1
+          Points        [90, 205]
+          Branch {
+            Points        [280, 205]
+            Branch {
+              Points        [280, 90]
+              DstComponent  "Product2"
+              DstTerminal   3
+            }
+            Branch {
+              Points        [375, 205; 375, 135]
+              DstComponent  "U_o"
+              DstTerminal   2
+            }
+          }
+          Branch {
+            Points        [90, 100]
+            DstComponent  "Pressure correction (PEM)"
+            DstTerminal   5
+          }
+          Branch {
+            Points        [90, 260]
+            DstComponent  "Pressure correction (Alkaline)"
+            DstTerminal   4
+          }
         }
         Annotation {
           Name          "<html><body>\n<p align=\"center\"><span style=\" font"
@@ -5730,17 +5694,17 @@ Plecs {
           Name          "<html><body>\n<p><span style=\" font-weight:600;\">Va"
 "riables</span></p>\n<p>p_cat = Cathode pressure</p>\n<p>p_an = Anode pressure"
 "</p>\n<p>p_sv = Saturation vapour pressure of pure water</p>\n<p>p_o = Standa"
-"rd pressure reference</p>\n<p>T = Temperature</p>\n<p>U_o = Standard Reversib"
-"le Potential</p>\n<p>type = KOH or NaOH</p></body></html>"
+"rd pressure reference</p>\n<p>T = Temperature</p>\n<p>U_o = Standard reversib"
+"le potential</p>\n<p>type = KOH or NaOH</p></body></html>"
           Position      [620, 265]
         } 
         Annotation {
           Name          "<html><body>\n<p>U_cor</p></body></html>"
-          Position      [450, 80]
+          Position      [440, 80]
         } 
         Annotation {
-          Name          "<html><body>\n<p>P_cor</p></body></html>"
-          Position      [290, 80]
+          Name          "<html><body>\n<p>p_cor</p></body></html>"
+          Position      [295, 70]
         } 
       }
     }
