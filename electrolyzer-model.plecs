@@ -1,5 +1,5 @@
 Plecs {
-  Name          "PEM_electrolyzer"
+  Name          "electrolyzer-model"
   Version       "4.7"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -99,7 +99,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 627]
+        Location      [0, 26; 1280, 625]
         ZoomFactor    1.71498
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -677,17 +677,27 @@ Plecs {
             Position      [24, -10]
             Direction     right
           }
+          Terminal {
+            Type          Input
+            Position      [-20, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-20, 0]
+            Direction     left
+          }
           Schematic {
-            Location      [0, 23; 1280, 634]
-            ZoomFactor    1.71498
-            SliderPosition [-1, 0]
+            Location      [0, 26; 1280, 632]
+            ZoomFactor    0.873844
+            SliderPosition [0, 0]
             ShowBrowser   off
             BrowserWidth  100
             Component {
               Type          Constant
               Name          "F"
               Show          on
-              Position      [70, 220]
+              Position      [55, 260]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -707,7 +717,7 @@ Plecs {
               Type          Product
               Name          "Product1"
               Show          off
-              Position      [195, 75]
+              Position      [180, 115]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -731,7 +741,7 @@ Plecs {
               Type          Product
               Name          "Product2"
               Show          off
-              Position      [125, 180]
+              Position      [110, 220]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -752,29 +762,10 @@ Plecs {
               }
             }
             Component {
-              Type          Output
-              Name          "U_o"
-              Show          on
-              Position      [255, 75]
-              Direction     right
-              Flipped       off
-              LabelPosition south
-              Parameter {
-                Variable      "Index"
-                Value         "1"
-                Show          on
-              }
-              Parameter {
-                Variable      "Width"
-                Value         "-1"
-                Show          off
-              }
-            }
-            Component {
               Type          Constant
               Name          "Constant"
               Show          on
-              Position      [70, 75]
+              Position      [55, 115]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -794,7 +785,7 @@ Plecs {
               Type          Constant
               Name          "Constant2"
               Show          on
-              Position      [70, 120]
+              Position      [55, 160]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -814,7 +805,7 @@ Plecs {
               Type          Sum
               Name          "Sum"
               Show          off
-              Position      [125, 75]
+              Position      [110, 115]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -838,7 +829,7 @@ Plecs {
               Type          Constant
               Name          "n_e"
               Show          on
-              Position      [70, 180]
+              Position      [55, 220]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -854,12 +845,476 @@ Plecs {
                 Show          off
               }
             }
+            Component {
+              Type          Output
+              Name          "U_o"
+              Show          on
+              Position      [1030, 110]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "1"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant1"
+              Show          on
+              Position      [645, 100]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1.5184"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Subtract"
+              Show          off
+              Position      [845, 185]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "+-++"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product3"
+              Show          off
+              Position      [725, 160]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant3"
+              Show          on
+              Position      [645, 155]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1.5421e-3"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Input
+              Name          "T"
+              Show          on
+              Position      [515, 245]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "2"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant4"
+              Show          on
+              Position      [645, 210]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "9.523e-5"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product4"
+              Show          off
+              Position      [725, 245]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "***"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant5"
+              Show          on
+              Position      [645, 305]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "9.84e-8"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Math
+              Name          "Math"
+              Show          on
+              Position      [580, 270]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Operator"
+                Value         "4"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product5"
+              Show          off
+              Position      [725, 325]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Math
+              Name          "Math1"
+              Show          on
+              Position      [575, 355]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Operator"
+                Value         "1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant6"
+              Show          on
+              Position      [1225, 105]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-20, -10; 20, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1.5184"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Subtract1"
+              Show          off
+              Position      [1425, 190]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "+-++"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product6"
+              Show          off
+              Position      [1305, 165]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant7"
+              Show          on
+              Position      [1225, 160]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1.2261e-3"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Input
+              Name          "T1"
+              Show          on
+              Position      [1100, 255]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Index"
+                Value         "3"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant8"
+              Show          on
+              Position      [1225, 215]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "1.1858e-5"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product7"
+              Show          off
+              Position      [1305, 250]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "***"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "Constant9"
+              Show          on
+              Position      [1225, 310]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-30, -10; 30, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "5.6692e-7"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Math
+              Name          "Math2"
+              Show          on
+              Position      [1160, 275]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Operator"
+                Value         "4"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product8"
+              Show          off
+              Position      [1305, 330]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "|**"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
+            Component {
+              Type          Math
+              Name          "Math3"
+              Show          on
+              Position      [1155, 360]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Operator"
+                Value         "1"
+                Show          off
+              }
+            }
             Connection {
               Type          Signal
               SrcComponent  "Product1"
               SrcTerminal   1
-              DstComponent  "U_o"
-              DstTerminal   1
+              Points        [225, 115]
             }
             Connection {
               Type          Signal
@@ -872,7 +1327,7 @@ Plecs {
               Type          Signal
               SrcComponent  "F"
               SrcTerminal   1
-              Points        [125, 220]
+              Points        [110, 260]
               DstComponent  "Product2"
               DstTerminal   3
             }
@@ -880,7 +1335,7 @@ Plecs {
               Type          Signal
               SrcComponent  "Constant2"
               SrcTerminal   1
-              Points        [125, 120]
+              Points        [110, 160]
               DstComponent  "Sum"
               DstTerminal   3
             }
@@ -902,23 +1357,254 @@ Plecs {
               Type          Signal
               SrcComponent  "Product2"
               SrcTerminal   1
-              Points        [195, 180]
+              Points        [180, 220]
               DstComponent  "Product1"
               DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant3"
+              SrcTerminal   1
+              DstComponent  "Product3"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant1"
+              SrcTerminal   1
+              Points        [770, 100; 770, 170]
+              DstComponent  "Subtract"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product3"
+              SrcTerminal   1
+              Points        [765, 160; 765, 180]
+              DstComponent  "Subtract"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant4"
+              SrcTerminal   1
+              Points        [690, 210; 690, 235]
+              DstComponent  "Product4"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product4"
+              SrcTerminal   1
+              Points        [765, 245; 765, 190]
+              DstComponent  "Subtract"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "T"
+              SrcTerminal   1
+              Points        [540, 245]
+              Branch {
+                Points        [600, 245]
+                Branch {
+                  Points        [600, 185; 695, 185]
+                  DstComponent  "Product3"
+                  DstTerminal   3
+                }
+                Branch {
+                  DstComponent  "Product4"
+                  DstTerminal   3
+                }
+              }
+              Branch {
+                Points        [540, 270]
+                Branch {
+                  DstComponent  "Math"
+                  DstTerminal   2
+                }
+                Branch {
+                  Points        [540, 355]
+                  DstComponent  "Math1"
+                  DstTerminal   2
+                }
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Math"
+              SrcTerminal   1
+              Points        [690, 270; 690, 255]
+              DstComponent  "Product4"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant5"
+              SrcTerminal   1
+              Points        [690, 305; 690, 320]
+              DstComponent  "Product5"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Math1"
+              SrcTerminal   1
+              Points        [690, 355; 690, 330]
+              DstComponent  "Product5"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product5"
+              SrcTerminal   1
+              Points        [770, 325; 770, 200]
+              DstComponent  "Subtract"
+              DstTerminal   5
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Subtract"
+              SrcTerminal   1
+              Points        [880, 185]
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant7"
+              SrcTerminal   1
+              DstComponent  "Product6"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant6"
+              SrcTerminal   1
+              Points        [1350, 105; 1350, 175]
+              DstComponent  "Subtract1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product6"
+              SrcTerminal   1
+              Points        [1345, 165; 1345, 185]
+              DstComponent  "Subtract1"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant8"
+              SrcTerminal   1
+              Points        [1270, 215; 1270, 240]
+              DstComponent  "Product7"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product7"
+              SrcTerminal   1
+              Points        [1345, 250; 1345, 195]
+              DstComponent  "Subtract1"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "T1"
+              SrcTerminal   1
+              Points        [1120, 255]
+              Branch {
+                Points        [1120, 250; 1180, 250]
+                Branch {
+                  Points        [1180, 190; 1275, 190]
+                  DstComponent  "Product6"
+                  DstTerminal   3
+                }
+                Branch {
+                  DstComponent  "Product7"
+                  DstTerminal   3
+                }
+              }
+              Branch {
+                Points        [1120, 275]
+                Branch {
+                  DstComponent  "Math2"
+                  DstTerminal   2
+                }
+                Branch {
+                  Points        [1120, 360]
+                  DstComponent  "Math3"
+                  DstTerminal   2
+                }
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Math2"
+              SrcTerminal   1
+              Points        [1270, 275; 1270, 260]
+              DstComponent  "Product7"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Constant9"
+              SrcTerminal   1
+              Points        [1270, 310; 1270, 325]
+              DstComponent  "Product8"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Math3"
+              SrcTerminal   1
+              Points        [1270, 360; 1270, 335]
+              DstComponent  "Product8"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product8"
+              SrcTerminal   1
+              Points        [1350, 330; 1350, 205]
+              DstComponent  "Subtract1"
+              DstTerminal   5
             }
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-weight:600;"
 "\">Constants</span></p>\n<p>n_e = Number of electrons transferred in a unit e"
 "lectrochemical reaction, 2 </p>\n<p>F = Faraday's constant, 96485 C/mol = 1 F"
 "</p></body></html>"
-              Position      [435, 220]
+              Position      [220, 325]
             } 
             Annotation {
-              Name          "<html><body>\n<p><span style=\" font-size:8px;\">"
-"Koponen et al. &quot;Effect of Power Quality on the Design of PEM Water Elect"
-"rolysis Systems&quot;, Applied Energy 279, 115791, 2020, https://doi.org/10.1"
-"016/j.apenergy.2020.115791</span></p></body></html>"
-              Position      [355, 30]
+              Name          "<html><body>\n<p><span style=\" font-size:12px; f"
+"ont-weight:600;\">Koponen [1]</span></p></body></html>"
+              Position      [115, 75]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-size:16px; f"
+"ont-weight:600;\">Standard reversible potential </span></p></body></html>"
+              Position      [725, 20]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-size:12px; f"
+"ont-weight:600;\">LeRoy [2]</span></p></body></html>"
+              Position      [730, 70]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-weight:600;"
+"\">Variables</span></p>\n<p>T = Temperature</p></body></html>"
+              Position      [755, 385]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-size:12px; f"
+"ont-weight:600;\">Dale [3]</span></p></body></html>"
+              Position      [1310, 75]
+            } 
+            Annotation {
+              Name          "<html><body>\n<p><span style=\" font-weight:600;"
+"\">Variables</span></p>\n<p>T = Temperature</p></body></html>"
+              Position      [1335, 390]
             } 
           }
         }
@@ -1074,9 +1760,7 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "U_o"
-          SrcTerminal   1
-          Points        [495, 160]
+          Points        [470, 160; 495, 160]
           DstComponent  "Sum"
           DstTerminal   3
         }
@@ -1097,7 +1781,8 @@ Plecs {
           Name          "<html><body>\n<p><span style=\" font-weight:600;\">Va"
 "riables</span></p>\n<p>p_cat = Cathode pressure</p>\n<p>p_an = Anode pressure"
 "</p>\n<p>p_sv = Saturation vapour pressure of pure water</p>\n<p>p_o = Standa"
-"rd pressure reference</p>\n<p>T = Temperature</p></body></html>"
+"rd pressure reference</p>\n<p>T = Temperature</p>\n<p>U_o = Standard Reversib"
+"le Potential</p></body></html>"
           Position      [595, 265]
         } 
         Annotation {
