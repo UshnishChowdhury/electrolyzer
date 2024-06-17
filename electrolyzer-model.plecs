@@ -60,7 +60,7 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Frame         [-30, -35; 30, 35]
+      Frame         [-30, -40; 30, 40]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -70,16 +70,16 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Output
-        Position      [34, -25]
+        Position      [34, -20]
         Direction     right
       }
       Terminal {
         Type          Input
-        Position      [-30, 20]
+        Position      [-30, 25]
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 634]
+        Location      [0, 26; 1280, 632]
         ZoomFactor    1.71498
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -106,7 +106,7 @@ Plecs {
             Direction     right
           }
           Schematic {
-            Location      [0, 26; 1280, 624]
+            Location      [0, 26; 1280, 623]
             ZoomFactor    1.96257
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -377,7 +377,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 625]
+            Location      [0, 26; 1280, 624]
             ZoomFactor    0.873844
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -386,7 +386,7 @@ Plecs {
               Type          Output
               Name          "U_o"
               Show          on
-              Position      [1205, 300]
+              Position      [1355, 210]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -405,7 +405,7 @@ Plecs {
               Type          Subsystem
               Name          "Schalenbach [1]"
               Show          on
-              Position      [305, 190]
+              Position      [340, 190]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -423,7 +423,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 627]
+                Location      [0, 26; 1280, 626]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -656,7 +656,7 @@ Plecs {
 "00;\">Constants</span></p>\n<p>n_e = Number of electrons transferred in a uni"
 "t electrochemical reaction, 2 </p>\n<p>F = Faraday's constant, 96485 C/mol = "
 "1 F</p></body></html>"
-                  Position      [450, 155]
+                  Position      [450, 195]
                 } 
                 Annotation {
                   Name          "<html><body>\n<p><span style=\" font-weight:6"
@@ -669,7 +669,7 @@ Plecs {
               Type          Subsystem
               Name          "LeRoy [2]"
               Show          on
-              Position      [480, 195]
+              Position      [480, 190]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -692,7 +692,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 632]
+                Location      [0, 26; 1280, 631]
                 ZoomFactor    0.873846
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -1050,12 +1050,12 @@ Plecs {
                 Annotation {
                   Name          "<html><body>\n<p><span style=\" font-size:12p"
 "x; font-weight:600;\">LeRoy equation</span></p></body></html>"
-                  Position      [205, 30]
+                  Position      [300, 30]
                 } 
                 Annotation {
                   Name          "<html><body>\n<p><span style=\" font-weight:6"
 "00;\">Variables</span></p>\n<p>T = Temperature (K)</p></body></html>"
-                  Position      [485, 305]
+                  Position      [500, 320]
                 } 
               }
             }
@@ -1086,7 +1086,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 632]
+                Location      [0, 26; 1280, 631]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -1330,7 +1330,7 @@ Plecs {
               Type          Subsystem
               Name          "Dale [3]"
               Show          on
-              Position      [630, 195]
+              Position      [625, 195]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -1353,7 +1353,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 635]
+                Location      [0, 26; 1280, 634]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -1724,7 +1724,7 @@ Plecs {
               Type          Subsystem
               Name          "Hammoudi [4]"
               Show          on
-              Position      [785, 195]
+              Position      [780, 195]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -1747,7 +1747,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 634]
+                Location      [0, 26; 1280, 633]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -2021,7 +2021,7 @@ Plecs {
               Type          Subsystem
               Name          "da Costa [6]"
               Show          on
-              Position      [1065, 195]
+              Position      [1075, 195]
               Direction     up
               Flipped       off
               LabelPosition south
@@ -2044,7 +2044,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 633]
+                Location      [0, 26; 1280, 632]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -2424,12 +2424,12 @@ Plecs {
                 Annotation {
                   Name          "<html><body>\n<p><span style=\" font-size:12p"
 "x; font-weight:600;\">da Costa equation</span></p></body></html>"
-                  Position      [245, 35]
+                  Position      [325, 30]
                 } 
                 Annotation {
                   Name          "<html><body>\n<p><span style=\" font-weight:6"
 "00;\">Variables</span></p>\n<p>T = Temperature</p></body></html>"
-                  Position      [535, 380]
+                  Position      [520, 460]
                 } 
               }
             }
@@ -2437,7 +2437,7 @@ Plecs {
               Type          Input
               Name          "T"
               Show          on
-              Position      [300, 85]
+              Position      [335, 85]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -2452,13 +2452,128 @@ Plecs {
                 Show          off
               }
             }
-            Connection {
-              Type          Signal
-              SrcComponent  "Schalenbach [1]"
-              SrcTerminal   1
-              Points        [375, 155; 375, 300]
-              DstComponent  "U_o"
-              DstTerminal   1
+            Component {
+              Type          SignalMux
+              Name          "Mux"
+              Show          off
+              Position      [1160, 365]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Width"
+                Value         "6"
+                Show          off
+              }
+            }
+            Component {
+              Type          CScript
+              Name          "C-Script"
+              Show          on
+              Position      [1235, 365]
+              Direction     up
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "DialogGeometry"
+                Value         "[640 341 623 360]"
+                Show          off
+              }
+              Parameter {
+                Variable      "NumInputs"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NumOutputs"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NumContStates"
+                Value         "0"
+                Show          off
+              }
+              Parameter {
+                Variable      "NumDiscStates"
+                Value         "0"
+                Show          off
+              }
+              Parameter {
+                Variable      "NumZCSignals"
+                Value         "0"
+                Show          off
+              }
+              Parameter {
+                Variable      "DirectFeedthrough"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Ts"
+                Value         "0"
+                Show          off
+              }
+              Parameter {
+                Variable      "Parameters"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "LangStandard"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "GnuExtensions"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "RuntimeCheck"
+                Value         "2"
+                Show          off
+              }
+              Parameter {
+                Variable      "Declarations"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "StartFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "OutputFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "UpdateFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "DerivativeFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "TerminateFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "StoreCustomStateFcn"
+                Value         ""
+                Show          off
+              }
+              Parameter {
+                Variable      "RestoreCustomStateFcn"
+                Value         ""
+                Show          off
+              }
             }
             Connection {
               Type          Signal
@@ -2466,7 +2581,7 @@ Plecs {
               SrcTerminal   1
               Points        [410, 85]
               Branch {
-                Points        [410, 160]
+                Points        [410, 155]
                 DstComponent  "LeRoy [2]"
                 DstTerminal   1
               }
@@ -2499,6 +2614,61 @@ Plecs {
                   }
                 }
               }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Schalenbach [1]"
+              SrcTerminal   1
+              Points        [395, 155; 395, 390]
+              DstComponent  "Mux"
+              DstTerminal   7
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "LeRoy [2]"
+              SrcTerminal   2
+              Points        [550, 155; 550, 380]
+              DstComponent  "Mux"
+              DstTerminal   6
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Dale [3]"
+              SrcTerminal   2
+              Points        [695, 150; 695, 370]
+              DstComponent  "Mux"
+              DstTerminal   5
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Hammoudi [4]"
+              SrcTerminal   2
+              Points        [845, 150; 845, 360]
+              DstComponent  "Mux"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Bernardi [5]"
+              SrcTerminal   2
+              Points        [985, 150; 985, 350]
+              DstComponent  "Mux"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "da Costa [6]"
+              SrcTerminal   2
+              Points        [1130, 150; 1130, 340]
+              DstComponent  "Mux"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Mux"
+              SrcTerminal   1
+              DstComponent  "C-Script"
+              DstTerminal   1
             }
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-size:16px; f"
@@ -2637,7 +2807,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 628]
+            Location      [0, 26; 1280, 625]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -3338,7 +3508,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 633]
+                Location      [0, 26; 1280, 632]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -3835,7 +4005,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 630]
+            Location      [0, 26; 1280, 628]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -4063,7 +4233,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 633]
+                Location      [0, 26; 1280, 632]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -4883,7 +5053,7 @@ Plecs {
                 Direction     left
               }
               Schematic {
-                Location      [0, 26; 1280, 628]
+                Location      [0, 26; 1280, 626]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -5695,7 +5865,7 @@ Plecs {
 "riables</span></p>\n<p>p_cat = Cathode pressure</p>\n<p>p_an = Anode pressure"
 "</p>\n<p>p_sv = Saturation vapour pressure of pure water</p>\n<p>p_o = Standa"
 "rd pressure reference</p>\n<p>T = Temperature</p>\n<p>U_o = Standard reversib"
-"le potential</p>\n<p>type = KOH or NaOH</p></body></html>"
+"le potential</p>\n<p>type = KOH or NaOH (For alkaline)</p></body></html>"
           Position      [620, 265]
         } 
         Annotation {
@@ -5712,11 +5882,11 @@ Plecs {
       Type          Subsystem
       Name          "Ohmic overvoltage"
       Show          on
-      Position      [160, 205]
+      Position      [275, 100]
       Direction     up
       Flipped       off
       LabelPosition south
-      Frame         [-30, -20; 30, 20]
+      Frame         [-30, -40; 30, 40]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -5726,17 +5896,17 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Input
-        Position      [-30, -5]
+        Position      [-30, 15]
         Direction     left
       }
       Terminal {
         Type          Output
-        Position      [34, -5]
+        Position      [34, 15]
         Direction     right
       }
       Terminal {
         Type          Input
-        Position      [-30, 5]
+        Position      [-30, 25]
         Direction     left
       }
       Schematic {
