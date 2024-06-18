@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 26; 1280, 635]
+    Location      [0, 23; 1280, 634]
     ZoomFactor    1.14437
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -514,7 +514,7 @@ Plecs {
       Type          Subsystem
       Name          "Static Model\n(Linear)"
       Show          on
-      Position      [905, 310]
+      Position      [975, 310]
       Direction     up
       Flipped       off
       LabelPosition none
@@ -742,7 +742,7 @@ Plecs {
       LabelPosition south
       Parameter {
         Variable      "V"
-        Value         "212.13"
+        Value         "78.7"
         Show          off
       }
       Parameter {
@@ -788,7 +788,7 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [0, 26; 1280, 630]
+        Location      [0, 26; 1280, 628]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -969,7 +969,7 @@ Plecs {
       Type          Voltmeter
       Name          "Vm1"
       Show          on
-      Position      [775, 320]
+      Position      [830, 320]
       Direction     up
       Flipped       off
       LabelPosition west
@@ -1157,9 +1157,677 @@ Plecs {
       Flipped       off
       LabelPosition south
       Probe {
-        Component     "U_3ph"
+        Component     "3ph Meter"
         Path          ""
-        Signals       {"Source voltage"}
+        Signals       {"Measured voltage"}
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "C1"
+      Show          on
+      Position      [780, 320]
+      Direction     down
+      Flipped       on
+      LabelPosition west
+      Parameter {
+        Variable      "C"
+        Value         "100e-6"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "DC-voltage controller"
+      Show          on
+      Position      [225, 460]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-65, -35; 65, 35]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-65, -20]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [69, -20]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-65, -10]
+        Direction     left
+      }
+      Schematic {
+        Location      [0, 26; 1280, 636]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "u_dc"
+          Show          on
+          Position      [55, 70]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "p_g_ref_lim"
+          Show          on
+          Position      [345, 100]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          CScript
+          Name          "Code"
+          Show          on
+          Position      [205, 105]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[641 347 623 360]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "3"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#include <math.h>\n"
+"#include <complex.h>\n"
+"\n"
+"#define u_dc InputSignal(0,0)\n"
+"#define u_dc_ref InputSignal(0,1)\n"
+"#define p_gi InputSignal(0,2)\n"
+"\n"
+"#define p_g_ref_lim OutputSignal(0,0)\n"
+"#define p_gi_new OutputSignal(0,1)\n"
+"\n"
+"#define zeta 1\n"
+"#define PI 3.14159265358979323846\n"
+"#define w_0_dc 2*PI*30\n"
+"#define C 0.001\n"
+"#define P_MAX 2800\n"
+"#define f_s 8000\n"
+"#define T_s 1/(2*f_s)"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "double k_p = 2*zeta*w_0_dc;\n"
+"double k_i = pow(w_0_dc, 2);\n"
+"double e = C * (pow(u_dc_ref,2) - pow(u_dc,2))/2;\n"
+"double p_g_ref = (-k_p)*e - p_gi;\n"
+"p_g_ref_lim = p_g_ref;\n"
+"if(p_g_ref_lim > P_MAX){\n"
+"\tp_g_ref_lim = P_MAX;\n"
+"} else if(p_g_ref_lim < -P_MAX){\n"
+"\tp_g_ref_lim = -P_MAX;\n"
+"}\n"
+"\n"
+"p_gi_new = p_gi + T_s*k_i*(e + (p_g_ref_lim - p_g_ref)/k_p);"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "StoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "RestoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "u_dc_ref"
+          Show          on
+          Position      [55, 105]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalMux
+          Name          "Mux"
+          Show          off
+          Position      [125, 105]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "3"
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalDemux
+          Name          "Demux"
+          Show          off
+          Position      [265, 105]
+          Direction     right
+          Flipped       on
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Delay
+          Name          "Delay"
+          Show          on
+          Position      [205, 205]
+          Direction     left
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "N"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "X0"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Mux"
+          SrcTerminal   1
+          DstComponent  "Code"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Code"
+          SrcTerminal   2
+          DstComponent  "Demux"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux"
+          SrcTerminal   3
+          Points        [285, 110; 285, 205]
+          DstComponent  "Delay"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Delay"
+          SrcTerminal   2
+          Points        [110, 205]
+          DstComponent  "Mux"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "u_dc"
+          SrcTerminal   1
+          Points        [90, 70; 90, 95]
+          DstComponent  "Mux"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "u_dc_ref"
+          SrcTerminal   1
+          DstComponent  "Mux"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux"
+          SrcTerminal   2
+          DstComponent  "p_g_ref_lim"
+          DstTerminal   1
+        }
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Current reference"
+      Show          on
+      Position      [395, 465]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-65, -35; 65, 35]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-65, -20]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-65, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [69, -25]
+        Direction     right
+      }
+      Terminal {
+        Type          Output
+        Position      [69, -15]
+        Direction     right
+      }
+      Schematic {
+        Location      [0, 26; 1280, 633]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "p_g_ref"
+          Show          on
+          Position      [75, 70]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          CScript
+          Name          "Code"
+          Show          on
+          Position      [195, 105]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[640 347 623 360]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#include <math.h>\n"
+"#include <complex.h>\n"
+"\n"
+"#define p_g_ref InputSignal(0,0)\n"
+"#define q_g_ref InputSignal(0,1)\n"
+"\n"
+"#define i_cd OutputSignal(0,0)\n"
+"#define i_cq OutputSignal(0,1)\n"
+"\n"
+"#define u_gN 78.7\n"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "i_cd = (2*p_g_ref)/(3*u_gN);\n"
+"i_cq = -(2*q_g_ref)/(3*u_gN);"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "StoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "RestoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "q_g_ref"
+          Show          on
+          Position      [75, 130]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalMux
+          Name          "Mux"
+          Show          off
+          Position      [125, 105]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalDemux
+          Name          "Demux"
+          Show          off
+          Position      [265, 105]
+          Direction     right
+          Flipped       on
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "i_cd"
+          Show          on
+          Position      [320, 75]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "i_cq"
+          Show          on
+          Position      [320, 130]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Mux"
+          SrcTerminal   1
+          DstComponent  "Code"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Code"
+          SrcTerminal   2
+          DstComponent  "Demux"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "p_g_ref"
+          SrcTerminal   1
+          Points        [105, 70; 105, 100]
+          DstComponent  "Mux"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "q_g_ref"
+          SrcTerminal   1
+          Points        [100, 130; 100, 110]
+          DstComponent  "Mux"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux"
+          SrcTerminal   2
+          Points        [280, 100; 280, 75]
+          DstComponent  "i_cd"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux"
+          SrcTerminal   3
+          Points        [280, 110; 280, 130]
+          DstComponent  "i_cq"
+          DstTerminal   1
+        }
       }
     }
     Connection {
@@ -1174,14 +1842,21 @@ Plecs {
           DstTerminal   2
         }
         Branch {
-          Points        [775, 210]
+          Points        [780, 210]
           Branch {
-            Points        [815, 210; 815, 310]
-            DstComponent  "Static Model\n(Linear)"
-            DstTerminal   2
+            Points        [830, 210]
+            Branch {
+              Points        [875, 210; 875, 310]
+              DstComponent  "Static Model\n(Linear)"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   1
+            }
           }
           Branch {
-            DstComponent  "Vm1"
+            DstComponent  "C1"
             DstTerminal   1
           }
         }
@@ -1207,14 +1882,21 @@ Plecs {
           DstTerminal   1
         }
         Branch {
-          Points        [775, 420]
+          Points        [780, 420]
           Branch {
-            Points        [815, 420; 815, 320]
-            DstComponent  "Static Model\n(Linear)"
-            DstTerminal   1
+            Points        [830, 420]
+            Branch {
+              Points        [875, 420; 875, 320]
+              DstComponent  "Static Model\n(Linear)"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   2
+            }
           }
           Branch {
-            DstComponent  "Vm1"
+            DstComponent  "C1"
             DstTerminal   2
           }
         }
