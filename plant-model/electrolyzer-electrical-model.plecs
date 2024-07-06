@@ -46,9 +46,13 @@ Plecs {
   AlgebraicLoopTolerance "1e-6"
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
+  Terminal {
+    Type          Input
+    Index         "1"
+  }
   Schematic {
     Location      [8, 31; 1272, 626]
-    ZoomFactor    1.71498
+    ZoomFactor    1.49863
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
@@ -56,11 +60,11 @@ Plecs {
       Type          Subsystem
       Name          "Reversible or open circuit voltage"
       Show          on
-      Position      [610, 70]
+      Position      [625, 60]
       Direction     up
       Flipped       off
       LabelPosition south
-      Frame         [-50, -40; 50, 40]
+      Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -70,16 +74,21 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Output
-        Position      [54, -20]
+        Position      [39, -10]
         Direction     right
       }
       Terminal {
         Type          Input
-        Position      [-50, 25]
+        Position      [-35, 15]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-35, -20]
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 628]
+        Location      [0, 26; 1280, 619]
         ZoomFactor    1.71498
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -88,7 +97,7 @@ Plecs {
           Type          Subsystem
           Name          "f"
           Show          on
-          Position      [325, 155]
+          Position      [320, 155]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -106,7 +115,7 @@ Plecs {
             Direction     right
           }
           Schematic {
-            Location      [0, 26; 1280, 623]
+            Location      [0, 26; 1280, 620]
             ZoomFactor    1.96257
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -276,9 +285,9 @@ Plecs {
             }
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-weight:600;"
-"\">Constants</span></p>\n<p>R = Universal gas constant, 8.314 J/mol</p>\n<p>n"
-"_e = Number of electrons transferred in a unit electrochemical reaction, 2</p"
-">\n<p>F = Faraday's constant, 96485 C/mol = 1 F</p></body></html>"
+"\">Constants</span></p>\n<p>R = Universal gas constant, 8.314 J mol^-1 J^-1</"
+"p>\n<p>n_e = Number of electrons transferred in a unit electrochemical reacti"
+"on, 2</p>\n<p>F = Faraday's constant, 96485 C/mol = 1 F</p></body></html>"
               Position      [375, 170]
             } 
           }
@@ -311,7 +320,7 @@ Plecs {
           Type          Sum
           Name          "Sum"
           Show          off
-          Position      [480, 90]
+          Position      [490, 90]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -335,7 +344,7 @@ Plecs {
           Type          Output
           Name          "U_rev"
           Show          on
-          Position      [545, 90]
+          Position      [540, 90]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -352,9 +361,9 @@ Plecs {
         }
         Component {
           Type          Subsystem
-          Name          "U_o"
+          Name          "Standard reversible voltage"
           Show          on
-          Position      [420, 155]
+          Position      [455, 160]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -377,7 +386,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 621]
+            Location      [0, 26; 1280, 618]
             ZoomFactor    0.873844
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -692,7 +701,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 629]
+                Location      [0, 26; 1280, 628]
                 ZoomFactor    0.873846
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -2673,7 +2682,7 @@ Plecs {
             Annotation {
               Name          "<html><body>\n<p><span style=\" font-size:16px; f"
 "ont-weight:600;\">Standard reversible potential </span></p></body></html>"
-              Position      [690, 25]
+              Position      [705, 35]
             } 
             Annotation {
               Name          base64 "PGh0bWw+PGJvZHk+CjxwPlsyXSBMZSBSb3kgZXQgYW"
@@ -2750,7 +2759,7 @@ Plecs {
           Type          Input
           Name          "T"
           Show          on
-          Position      [60, 205]
+          Position      [55, 205]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2769,11 +2778,11 @@ Plecs {
           Type          Subsystem
           Name          "Pressure correction (PEM)"
           Show          on
-          Position      [160, 110]
+          Position      [180, 115]
           Direction     up
           Flipped       off
           LabelPosition south
-          Frame         [-35, -40; 35, 40]
+          Frame         [-40, -45; 40, 45]
           SampleTime    "-1"
           CodeGenDiscretizationMethod "2"
           CodeGenTarget "Generic"
@@ -2783,31 +2792,31 @@ Plecs {
           MaskIconRotates on
           Terminal {
             Type          Input
-            Position      [-35, -30]
+            Position      [-40, -35]
             Direction     left
           }
           Terminal {
             Type          Input
-            Position      [-35, -20]
+            Position      [-40, -25]
             Direction     left
           }
           Terminal {
             Type          Input
-            Position      [-35, 0]
+            Position      [-40, -5]
             Direction     left
           }
           Terminal {
             Type          Output
-            Position      [39, -30]
+            Position      [44, -35]
             Direction     right
           }
           Terminal {
             Type          Input
-            Position      [-35, -10]
+            Position      [-40, -15]
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 624]
+            Location      [0, 26; 1280, 623]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -3962,11 +3971,11 @@ Plecs {
           Type          Subsystem
           Name          "Pressure correction (Alkaline)"
           Show          on
-          Position      [160, 270]
+          Position      [180, 275]
           Direction     up
           Flipped       off
           LabelPosition south
-          Frame         [-35, -40; 35, 40]
+          Frame         [-40, -45; 40, 45]
           SampleTime    "-1"
           CodeGenDiscretizationMethod "2"
           CodeGenTarget "Generic"
@@ -3976,36 +3985,36 @@ Plecs {
           MaskIconRotates on
           Terminal {
             Type          Input
-            Position      [-35, -30]
+            Position      [-40, -35]
             Direction     left
           }
           Terminal {
             Type          Input
-            Position      [-35, 0]
+            Position      [-40, -5]
             Direction     left
           }
           Terminal {
             Type          Output
-            Position      [39, -30]
+            Position      [44, -35]
             Direction     right
           }
           Terminal {
             Type          Input
-            Position      [-35, -10]
+            Position      [-40, -15]
             Direction     left
           }
           Terminal {
             Type          Input
-            Position      [-35, -20]
+            Position      [-40, -25]
             Direction     left
           }
           Terminal {
             Type          Input
-            Position      [-35, 10]
+            Position      [-40, 5]
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 627]
+            Location      [0, 26; 1280, 626]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -5053,7 +5062,7 @@ Plecs {
                 Direction     left
               }
               Schematic {
-                Location      [0, 26; 1280, 625]
+                Location      [0, 26; 1280, 624]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -5788,6 +5797,25 @@ Plecs {
             } 
           }
         }
+        Component {
+          Type          Input
+          Name          "P"
+          Show          on
+          Position      [55, 165]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Product2"
@@ -5804,9 +5832,9 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "U_o"
+          SrcComponent  "Standard reversible voltage"
           SrcTerminal   1
-          Points        [480, 135]
+          Points        [490, 140]
           DstComponent  "Sum"
           DstTerminal   3
         }
@@ -5821,7 +5849,7 @@ Plecs {
           Type          Signal
           SrcComponent  "f"
           SrcTerminal   1
-          Points        [350, 100]
+          Points        [350, 145; 350, 100]
           DstComponent  "Product2"
           DstTerminal   4
         }
@@ -5838,8 +5866,8 @@ Plecs {
               DstTerminal   3
             }
             Branch {
-              Points        [375, 205; 375, 135]
-              DstComponent  "U_o"
+              Points        [375, 205; 375, 140]
+              DstComponent  "Standard reversible voltage"
               DstTerminal   2
             }
           }
@@ -5854,11 +5882,34 @@ Plecs {
             DstTerminal   4
           }
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "P"
+          SrcTerminal   1
+          Points        [85, 165]
+          Branch {
+            Points        [85, 90]
+            Branch {
+              Points        [85, 80]
+              DstComponent  "Pressure correction (PEM)"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Pressure correction (PEM)"
+              DstTerminal   2
+            }
+          }
+          Branch {
+            Points        [85, 240]
+            DstComponent  "Pressure correction (Alkaline)"
+            DstTerminal   1
+          }
+        }
         Annotation {
           Name          "<html><body>\n<p align=\"center\"><span style=\" font"
-"-size:12px; font-weight:600;\">Open circuit voltage using Nernst Equation</sp"
-"an></p></body></html>"
-          Position      [170, 35]
+"-size:12px; font-weight:600;\">Reversible voltage using Nernst Equation</span"
+"></p></body></html>"
+          Position      [370, 25]
         } 
         Annotation {
           Name          "<html><body>\n<p><span style=\" font-weight:600;\">Va"
@@ -5866,7 +5917,7 @@ Plecs {
 "</p>\n<p>p_sv = Saturation vapour pressure of pure water</p>\n<p>p_o = Standa"
 "rd pressure reference</p>\n<p>T = Temperature</p>\n<p>U_o = Standard reversib"
 "le potential</p>\n<p>type = KOH or NaOH (For alkaline)</p></body></html>"
-          Position      [620, 265]
+          Position      [590, 285]
         } 
         Annotation {
           Name          "<html><body>\n<p>U_cor</p></body></html>"
@@ -5882,11 +5933,11 @@ Plecs {
       Type          Subsystem
       Name          "Ohmic losses"
       Show          on
-      Position      [610, 195]
+      Position      [625, 150]
       Direction     up
       Flipped       off
       LabelPosition south
-      Frame         [-50, -40; 50, 40]
+      Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -5896,21 +5947,26 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Input
-        Position      [-50, 15]
+        Position      [-35, 5]
         Direction     left
       }
       Terminal {
         Type          Output
-        Position      [54, 15]
+        Position      [39, 15]
         Direction     right
       }
       Terminal {
         Type          Input
-        Position      [-50, 25]
+        Position      [-35, 15]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-35, -20]
         Direction     left
       }
       Schematic {
-        Location      [8, 31; 1272, 626]
+        Location      [0, 26; 1280, 629]
         ZoomFactor    1.96257
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -5936,7 +5992,7 @@ Plecs {
         }
         Component {
           Type          Output
-          Name          "U_ohm"
+          Name          "R_ohm"
           Show          on
           Position      [195, 80]
           Direction     right
@@ -5955,7 +6011,7 @@ Plecs {
         }
         Component {
           Type          Input
-          Name          "j"
+          Name          "A"
           Show          on
           Position      [60, 125]
           Direction     right
@@ -5996,61 +6052,34 @@ Plecs {
             Show          off
           }
         }
-        Connection {
-          Type          Signal
-          SrcComponent  "r"
-          SrcTerminal   1
-          DstComponent  "Product1"
-          DstTerminal   2
+        Component {
+          Type          Input
+          Name          "T"
+          Show          on
+          Position      [60, 40]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
         }
-        Connection {
-          Type          Signal
-          SrcComponent  "j"
-          SrcTerminal   1
-          Points        [120, 125]
-          DstComponent  "Product1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product1"
-          SrcTerminal   1
-          DstComponent  "U_ohm"
-          DstTerminal   1
-        }
-      }
-    }
-    Component {
-      Type          Subsystem
-      Name          "Subsystem"
-      Show          on
-      Position      [470, 95]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      Frame         [-25, -15; 25, 15]
-      SampleTime    "-1"
-      CodeGenDiscretizationMethod "2"
-      CodeGenTarget "Generic"
-      MaskDisplayLang "2"
-      MaskIconFrame on
-      MaskIconOpaque off
-      MaskIconRotates on
-      Schematic {
-        Location      [0, 23; 1280, 634]
-        ZoomFactor    1.49863
-        SliderPosition [0, 0]
-        ShowBrowser   off
-        BrowserWidth  100
         Component {
           Type          Subsystem
           Name          "Subsystem"
           Show          on
-          Position      [210, 105]
+          Position      [305, 50]
           Direction     up
           Flipped       off
           LabelPosition south
-          Frame         [-25, -20; 25, 20]
+          Frame         [-25, -15; 25, 15]
           SampleTime    "-1"
           CodeGenDiscretizationMethod "2"
           CodeGenTarget "Generic"
@@ -6060,25 +6089,25 @@ Plecs {
           MaskIconRotates on
           Terminal {
             Type          Input
-            Position      [-25, 5]
+            Position      [-25, 0]
             Direction     left
           }
           Terminal {
             Type          Output
-            Position      [29, 5]
+            Position      [29, 0]
             Direction     right
           }
           Schematic {
-            Location      [415, 55; 815, 261]
+            Location      [0, 23; 1280, 634]
             ZoomFactor    1
             SliderPosition [0, 0]
             ShowBrowser   off
             BrowserWidth  100
             Component {
               Type          Input
-              Name          "T"
+              Name          "In1"
               Show          on
-              Position      [80, 60]
+              Position      [60, 80]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -6095,9 +6124,9 @@ Plecs {
             }
             Component {
               Type          Output
-              Name          "U_act"
+              Name          "Out1"
               Show          on
-              Position      [285, 55]
+              Position      [220, 80]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -6112,40 +6141,131 @@ Plecs {
                 Show          off
               }
             }
-            Component {
-              Type          Constant
-              Name          "Constant"
-              Show          on
-              Position      [80, 120]
-              Direction     right
-              Flipped       off
-              LabelPosition south
-              Frame         [-25, -10; 25, 10]
-              Parameter {
-                Variable      "Value"
-                Value         "8.314"
-                Show          off
-              }
-              Parameter {
-                Variable      "DataType"
-                Value         "10"
-                Show          off
-              }
+            Connection {
+              Type          Signal
+              SrcComponent  "In1"
+              SrcTerminal   1
+              DstComponent  "Out1"
+              DstTerminal   1
             }
-            Component {
-              Type          Math
-              Name          "Math"
-              Show          on
-              Position      [200, 105]
-              Direction     down
-              Flipped       on
-              LabelPosition south
-              Parameter {
-                Variable      "Operator"
-                Value         "4"
-                Show          off
-              }
-            }
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "r"
+          SrcTerminal   1
+          DstComponent  "Product1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "A"
+          SrcTerminal   1
+          Points        [120, 125]
+          DstComponent  "Product1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Product1"
+          SrcTerminal   1
+          DstComponent  "R_ohm"
+          DstTerminal   1
+        }
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Activation anode"
+      Show          on
+      Position      [625, 250]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-35, -30; 35, 30]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-35, -20]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-35, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [39, -20]
+        Direction     right
+      }
+      Schematic {
+        Location      [0, 26; 1280, 629]
+        ZoomFactor    1.49863
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "T"
+          Show          on
+          Position      [70, 55]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "U_act_a"
+          Show          on
+          Position      [70, 115]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "I_act_a"
+          Show          on
+          Position      [235, 85]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
           }
         }
       }
@@ -6154,7 +6274,7 @@ Plecs {
       Type          VoltageSource
       Name          "U_rev"
       Show          on
-      Position      [410, 225]
+      Position      [445, 235]
       Direction     down
       Flipped       on
       LabelPosition east
@@ -6199,7 +6319,7 @@ Plecs {
       Type          CurrentSource
       Name          "I_act_a"
       Show          on
-      Position      [200, 130]
+      Position      [200, 120]
       Direction     left
       Flipped       on
       LabelPosition south
@@ -6218,7 +6338,7 @@ Plecs {
       Type          CurrentSource
       Name          "I_act_c"
       Show          on
-      Position      [305, 130]
+      Position      [300, 120]
       Direction     left
       Flipped       on
       LabelPosition south
@@ -6312,13 +6432,323 @@ Plecs {
       Type          From
       Name          "From"
       Show          off
-      Position      [380, 225]
+      Position      [400, 235]
       Direction     right
       Flipped       off
       LabelPosition south
       Parameter {
         Variable      "Tag"
         Value         "U_rev"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto1"
+      Show          off
+      Position      [700, 165]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "R_ohm"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From1"
+      Show          off
+      Position      [70, 135]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "R_ohm"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Activation cathode"
+      Show          on
+      Position      [625, 345]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-35, -30; 35, 30]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-35, -20]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-35, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [39, -20]
+        Direction     right
+      }
+      Schematic {
+        Location      [0, 26; 1280, 630]
+        ZoomFactor    1.49863
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "T"
+          Show          on
+          Position      [70, 55]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "U_act_c"
+          Show          on
+          Position      [70, 110]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "I_act_c"
+          Show          on
+          Position      [225, 90]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+      }
+    }
+    Component {
+      Type          Input
+      Name          "T"
+      Show          on
+      Position      [465, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "1"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto2"
+      Show          off
+      Position      [225, 25]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "U_act_a"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto3"
+      Show          off
+      Position      [340, 25]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "U_act_c"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From2"
+      Show          off
+      Position      [560, 240]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "U_act_a"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From3"
+      Show          off
+      Position      [555, 335]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "U_act_c"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto4"
+      Show          off
+      Position      [705, 230]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "I_act_a"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto5"
+      Show          off
+      Position      [710, 325]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "I_act_c"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From4"
+      Show          off
+      Position      [150, 85]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "I_act_a"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From5"
+      Show          off
+      Position      [365, 85]
+      Direction     left
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Tag"
+        Value         "I_act_c"
         Show          off
       }
       Parameter {
@@ -6339,7 +6769,7 @@ Plecs {
       SrcTerminal   1
       Points        [165, 160]
       Branch {
-        Points        [165, 130]
+        Points        [165, 120]
         Branch {
           DstComponent  "I_act_a"
           DstTerminal   1
@@ -6360,7 +6790,7 @@ Plecs {
       Type          Wire
       SrcComponent  "I_act_c"
       SrcTerminal   2
-      Points        [335, 130]
+      Points        [335, 120]
       Branch {
         Points        [335, 160]
         Branch {
@@ -6369,7 +6799,7 @@ Plecs {
           DstTerminal   2
         }
         Branch {
-          Points        [410, 160]
+          Points        [445, 160]
           DstComponent  "U_rev"
           DstTerminal   1
         }
@@ -6384,7 +6814,7 @@ Plecs {
       Type          Wire
       SrcComponent  "I_act_a"
       SrcTerminal   2
-      Points        [230, 130]
+      Points        [230, 120]
       Branch {
         Points        [230, 55]
         DstComponent  "Vm1"
@@ -6405,7 +6835,7 @@ Plecs {
             DstTerminal   1
           }
           Branch {
-            Points        [270, 130]
+            Points        [270, 120]
             Branch {
               DstComponent  "I_act_c"
               DstTerminal   1
@@ -6437,7 +6867,110 @@ Plecs {
       Type          Wire
       SrcComponent  "U_rev"
       SrcTerminal   2
-      Points        [410, 295; 55, 295]
+      Points        [445, 295; 55, 295]
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Ohmic losses"
+      SrcTerminal   2
+      DstComponent  "Goto1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From1"
+      SrcTerminal   1
+      DstComponent  "R3"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "T"
+      SrcTerminal   1
+      Points        [505, 40; 505, 75]
+      Branch {
+        Points        [505, 130]
+        Branch {
+          DstComponent  "Ohmic losses"
+          DstTerminal   4
+        }
+        Branch {
+          Points        [505, 230]
+          Branch {
+            DstComponent  "Activation anode"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [505, 325]
+            DstComponent  "Activation cathode"
+            DstTerminal   1
+          }
+        }
+      }
+      Branch {
+        DstComponent  "Reversible or open circuit voltage"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm1"
+      SrcTerminal   3
+      Points        [200, 25]
+      DstComponent  "Goto2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm2"
+      SrcTerminal   3
+      Points        [305, 25]
+      DstComponent  "Goto3"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From2"
+      SrcTerminal   1
+      DstComponent  "Activation anode"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From3"
+      SrcTerminal   1
+      DstComponent  "Activation cathode"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Activation anode"
+      SrcTerminal   3
+      DstComponent  "Goto4"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Activation cathode"
+      SrcTerminal   3
+      DstComponent  "Goto5"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From4"
+      SrcTerminal   1
+      Points        [200, 85]
+      DstComponent  "I_act_a"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From5"
+      SrcTerminal   1
+      Points        [300, 85]
+      DstComponent  "I_act_c"
+      DstTerminal   3
     }
   }
 }

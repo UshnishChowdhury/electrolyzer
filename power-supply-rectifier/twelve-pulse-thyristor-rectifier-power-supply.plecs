@@ -49,9 +49,9 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 26; 1280, 635]
+    Location      [8, 31; 1272, 624]
     ZoomFactor    1
-    SliderPosition [0, 11]
+    SliderPosition [0, 33]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -70,9 +70,9 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"AAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAAAAlgAAAAkAAACWAAAAAQAAAJYAAAACAA"
-"AAlgAAAAMAAACWAAABTQAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEYAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"wAAAJYAAAACAAAAlgAAAAEAAACWAAAABwAAAJYAAAAGAAAAlgAAAAUAAACWAAAABAAAAJYAAAAJAA"
+"AAlgAAAAgAAACWAAABTQAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEYAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AA1AAAAAQAAAAAAAAPoAAAAADU="
@@ -696,7 +696,7 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [0, 23; 1280, 634]
+        Location      [0, 26; 1280, 636]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -1072,9 +1072,9 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [0, 26; 1280, 630]
+        Location      [8, 31; 1272, 623]
         ZoomFactor    1
-        SliderPosition [54, 0]
+        SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
         Component {
@@ -2705,25 +2705,221 @@ Plecs {
             Show          off
           }
         }
+        Component {
+          Type          Reference
+          SrcComponent  "Components/Electrical/Transformers/Dd Trafo"
+          Name          "Dd Trafo"
+          Show          on
+          Position      [480, 235]
+          Direction     up
+          Flipped       off
+          LabelPosition north
+          Frame         [-25, -15; 25, 15]
+          Parameter {
+            Variable      "L"
+            Value         "[2e-3 1e-3]"
+            Show          off
+          }
+          Parameter {
+            Variable      "R"
+            Value         "[5 1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "n"
+            Value         "[10 1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "im"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "phim"
+            Value         "10"
+            Show          off
+          }
+          Parameter {
+            Variable      "Rfe"
+            Value         "inf"
+            Show          off
+          }
+          Parameter {
+            Variable      "legs"
+            Value         "3"
+            Show          off
+          }
+          Parameter {
+            Variable      "phaseshift"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "i1"
+            Value         "[0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "i2"
+            Value         "[0 0]"
+            Show          off
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [30, -10]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 0]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 10]
+            Direction     right
+          }
+        }
+        Component {
+          Type          Scope
+          Name          "Scope"
+          Show          on
+          Position      [595, 245]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Location      [0, 23; 1280, 652]
+          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
+"wBvAG0AQQByAGUAYQAAAAAA/////wAAAEwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
+"AA/////wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAAAAAA"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABxAP///wAAB4AAAAON"
+"AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
+"AAAAAAAAA=="
+          SavedViews    "AAAAAgAAAAA="
+          HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
+"AAACQAAAJYAAAAIAAAAlgAAAAcAAACWAAAABgAAAJYAAAAFAAAAlgAAAAQAAACWAAAAAwAAAJYAAA"
+"ACAAAAlgAAAAEAAACWAAAAjAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAB"
+"XAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
+"AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
+"AAAAAA1AAAAAQAAAAAAAAPoAAAAADU="
+          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          Axes          "1"
+          TimeRange     "0.0"
+          ScrollingMode "1"
+          SingleTimeAxis "1"
+          Open          "0"
+          Ts            "-1"
+          SampleLimit   "0"
+          XAxisLabel    "Time / s"
+          ShowLegend    "1"
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Fourier {
+            SingleXAxis       on
+            AxisLabel         "Frequency / Hz"
+            Scaling           0
+            PhaseDisplay      0
+            ShowFourierLegend off
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+          }
+        }
         Connection {
           Type          Wire
-          SrcComponent  "U_ga1"
+          SrcComponent  "U_gc1"
           SrcTerminal   2
-          Points        [290, 255; 340, 255]
+          Points        [390, 255]
           Branch {
-            DstComponent  "U_gb1"
-            DstTerminal   2
-          }
-          Branch {
-            Points        [390, 255]
+            Points        [340, 255]
             Branch {
-              DstComponent  "U_gc1"
-              DstTerminal   2
+              Points        [290, 255; 290, 225]
+              Branch {
+                DstComponent  "U_ga1"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Dd Trafo"
+                DstTerminal   1
+              }
             }
             Branch {
-              Points        [425, 255]
-              DstComponent  "3ph Meter"
-              DstTerminal   9
+              Points        [340, 235]
+              Branch {
+                DstComponent  "U_gb1"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Dd Trafo"
+                DstTerminal   2
+              }
+            }
+          }
+          Branch {
+            Points        [425, 255]
+            Branch {
+              Points        [425, 245]
+              Branch {
+                DstComponent  "3ph Meter"
+                DstTerminal   9
+              }
+              Branch {
+                DstComponent  "Dd Trafo"
+                DstTerminal   3
+              }
+            }
+            Branch {
+              Points        [425, 270; 525, 270]
+              Branch {
+                Points        [530, 270]
+                Branch {
+                  Points        [535, 270; 535, 225]
+                  DstComponent  "Dd Trafo"
+                  DstTerminal   4
+                }
+                Branch {
+                  Points        [530, 245]
+                  DstComponent  "Dd Trafo"
+                  DstTerminal   6
+                }
+              }
+              Branch {
+                Points        [525, 235]
+                DstComponent  "Dd Trafo"
+                DstTerminal   5
+              }
             }
           }
         }
@@ -3491,19 +3687,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 26; 1280, 655]
+      Location      [8, 31; 1272, 644]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAIMA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAeAAAAA2Pw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABxAP///wAAB4AAAAKvAAAA"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAdoAAAA2Pw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB2gAAABxAP///wAAB2gAAAKXAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALcAMAAAAFAAAAB"
-"AAAAJYAAAAFAAAAlgAAAAYAAACWAAAACAAAAJYAAAAJAAAAlgAAB4AAAAALAQAAAQAAAAAAAAAAAA"
-"AAAJb/////AAAAgQAAAAAAAAALAAAA9gAAAAEAAAAAAAAAlgAAAAEAAAAAAAAAlgAAAAEAAAAAAAA"
-"AlgAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAlgAAAAEAAAAA"
-"AAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAEMgAAAAEAAAAAAAAD6AAAAAA1"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"wAAAJYAAAACAAAAlgAAAAEAAACWAAAABwAAAJYAAAAGAAAAlgAAAAUAAACWAAAABAAAAJYAAAAJAA"
+"AAlgAAAAgAAACWAAAHaAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAD2AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AZyAAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -4920,6 +5117,140 @@ Plecs {
       Parameter {
         Variable      "Visibility"
         Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Electrical/Converters/2-Level\\nIGBT\\nConv."
+      Name          "2-Level\nIGBT\nConv."
+      Show          on
+      Position      [620, 495]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      CommentOut    DisabledOpenCircuit
+      Frame         [-25, -25; 25, 25]
+      Parameter {
+        Variable      "therm"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 10]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-15, -25]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, -30]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, 30]
+        Direction     down
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Control/Modulators/Space Vector PWM"
+      Name          "Space Vector PWM"
+      Show          on
+      Position      [515, 475]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      CommentOut    DisabledOpenCircuit
+      Frame         [-20, -20; 20, 20]
+      Parameter {
+        Variable      "pattern"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "fs"
+        Value         "10e3"
+        Show          off
+      }
+      Parameter {
+        Variable      "output_values"
+        Value         "[-1 1]"
+        Show          off
+      }
+      Terminal {
+        Type          Output
+        Position      [24, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-20, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-20, 10]
+        Direction     left
+      }
+    }
+    Component {
+      Type          Transformer
+      Name          "Tr3"
+      Show          on
+      Position      [110, 515]
+      Direction     right
+      Flipped       on
+      LabelPosition south
+      CommentOut    DisabledOpenCircuit
+      Parameter {
+        Variable      "Windings"
+        Value         "[1 2]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[2 1 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "Polarity"
+        Value         "+"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lm"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "im0"
+        Value         "0"
         Show          off
       }
     }
