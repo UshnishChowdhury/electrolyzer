@@ -1,14 +1,15 @@
 Plecs {
-  Name          "twelve-pulse-thyristor-rectifier-power-supply"
+  Name          "twelve-pulse-thyristor-rectifier-power-supply-with-transforme"
+"r"
   Version       "4.7"
-  CircuitModel  "ContStateSpace"
+  CircuitModel  "DiscStateSpace"
   StartTime     "0.0"
   TimeSpan      "0.1"
   Timeout       ""
-  Solver        "auto"
+  Solver        "FixedStepDiscrete"
   MaxStep       "1e-5"
   InitStep      "-1"
-  FixedStep     "1e-3"
+  FixedStep     "1e-5"
   Refine        "1"
   ZCStepSize    "1e-9"
   RelTol        "1e-3"
@@ -23,9 +24,9 @@ Plecs {
   MaxConsecutiveZCs "1000"
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
-  InitializationCommands "u = 0\na = 0\nu_s = 0.8165 * 150 * 0.5176\n%u_s = 1."
-"4142 * 420.8\nd = 0.17\nT_s = 0.02\n%L_ac = 0\nL_ac = 6.3e-6\nR_ac = 0\nu_rev"
-" = 150\nr_ohm = 10e-3"
+  InitializationCommands "u = 0\na = 0\n%u_s = 0.8165 * 150 * 0.5176\nu_s = 0."
+"8165 * 400\n%u_s = 1.4142 * 420.8\nd = 0.17\nT_s = 0.02\n%L_ac = 0\nL_ac = 10"
+"e-6\nR_ac = 0\nu_rev = 150\nr_ohm = 15.4e-3"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -49,9 +50,9 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [8, 31; 1272, 624]
-    ZoomFactor    1
-    SliderPosition [0, 33]
+    Location      [0, 26; 1280, 636]
+    ZoomFactor    0.763607
+    SliderPosition [0, -1]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -71,8 +72,8 @@ Plecs {
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAJYAAAACAAAAlgAAAAEAAACWAAAABwAAAJYAAAAGAAAAlgAAAAUAAACWAAAABAAAAJYAAAAJAA"
-"AAlgAAAAgAAACWAAABTQAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEYAAA"
+"QAAAJYAAAAIAAAAlgAAAAkAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAACAA"
+"AAlgAAAAMAAACWAAABTQAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEYAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AA1AAAAAQAAAAAAAAPoAAAAADU="
@@ -628,7 +629,7 @@ Plecs {
       }
       Parameter {
         Variable      "f(x)"
-        Value         "[0 0 4400 4400]"
+        Value         "[0 0 5000 5000]"
         Show          off
       }
       Parameter {
@@ -1048,17 +1049,7 @@ Plecs {
       }
       Terminal {
         Type          Output
-        Position      [64, -30]
-        Direction     right
-      }
-      Terminal {
-        Type          Output
         Position      [64, -20]
-        Direction     right
-      }
-      Terminal {
-        Type          Output
-        Position      [64, -10]
         Direction     right
       }
       Terminal {
@@ -1072,164 +1063,14 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [8, 31; 1272, 623]
+        Location      [8, 31; 1272, 613]
         ZoomFactor    1
-        SliderPosition [0, 0]
+        SliderPosition [162, -1]
         ShowBrowser   off
         BrowserWidth  100
         Component {
-          Type          ACVoltageSource
-          Name          "U_ga1"
-          Show          on
-          Position      [290, 190]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          ACVoltageSource
-          Name          "U_gb1"
-          Show          on
-          Position      [340, 190]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "-2*pi/3"
-            Show          off
-          }
-        }
-        Component {
-          Type          ACVoltageSource
-          Name          "U_gc1"
-          Show          on
-          Position      [390, 190]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "2*pi/3"
-            Show          off
-          }
-        }
-        Component {
           Type          Thyristor
           Name          "Thy1"
-          Show          on
-          Position      [650, 85]
-          Direction     down
-          Flipped       off
-          LabelPosition east
-          Parameter {
-            Variable      "Vf"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "Ron"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "s_init"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "thermal"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "Rth"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "T_init"
-            Value         ""
-            Show          off
-          }
-        }
-        Component {
-          Type          Thyristor
-          Name          "Thy2"
-          Show          on
-          Position      [885, 230]
-          Direction     down
-          Flipped       off
-          LabelPosition east
-          Parameter {
-            Variable      "Vf"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "Ron"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "s_init"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "thermal"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "Rth"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "T_init"
-            Value         ""
-            Show          off
-          }
-        }
-        Component {
-          Type          Thyristor
-          Name          "Thy3"
           Show          on
           Position      [770, 85]
           Direction     down
@@ -1268,9 +1109,87 @@ Plecs {
         }
         Component {
           Type          Thyristor
+          Name          "Thy2"
+          Show          on
+          Position      [1005, 230]
+          Direction     down
+          Flipped       off
+          LabelPosition east
+          Parameter {
+            Variable      "Vf"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ron"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "Rth"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Thyristor
+          Name          "Thy3"
+          Show          on
+          Position      [890, 85]
+          Direction     down
+          Flipped       off
+          LabelPosition east
+          Parameter {
+            Variable      "Vf"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ron"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "Rth"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Thyristor
           Name          "Thy4"
           Show          on
-          Position      [650, 225]
+          Position      [770, 225]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1309,7 +1228,7 @@ Plecs {
           Type          Thyristor
           Name          "Thy5"
           Show          on
-          Position      [885, 85]
+          Position      [1005, 85]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1348,7 +1267,7 @@ Plecs {
           Type          Thyristor
           Name          "Thy6"
           Show          on
-          Position      [770, 225]
+          Position      [890, 225]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1387,7 +1306,7 @@ Plecs {
           Type          Resistor
           Name          "R_ohm"
           Show          on
-          Position      [1005, 300]
+          Position      [1125, 300]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -1401,7 +1320,7 @@ Plecs {
           Type          From
           Name          "From6"
           Show          off
-          Position      [610, 60]
+          Position      [730, 60]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1420,7 +1339,7 @@ Plecs {
           Type          From
           Name          "From7"
           Show          off
-          Position      [840, 210]
+          Position      [960, 210]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1439,7 +1358,7 @@ Plecs {
           Type          From
           Name          "From8"
           Show          off
-          Position      [730, 60]
+          Position      [850, 60]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1458,7 +1377,7 @@ Plecs {
           Type          From
           Name          "From9"
           Show          off
-          Position      [845, 60]
+          Position      [965, 60]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1477,7 +1396,7 @@ Plecs {
           Type          From
           Name          "From10"
           Show          off
-          Position      [730, 205]
+          Position      [850, 205]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1496,7 +1415,7 @@ Plecs {
           Type          From
           Name          "From11"
           Show          off
-          Position      [605, 205]
+          Position      [725, 205]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1515,7 +1434,7 @@ Plecs {
           Type          Voltmeter
           Name          "Vm1"
           Show          on
-          Position      [945, 295]
+          Position      [1065, 295]
           Direction     up
           Flipped       off
           LabelPosition west
@@ -1524,7 +1443,7 @@ Plecs {
           Type          Ammeter
           Name          "Am1"
           Show          on
-          Position      [975, 45]
+          Position      [1095, 45]
           Direction     left
           Flipped       off
           LabelPosition south
@@ -1533,7 +1452,7 @@ Plecs {
           Type          DCVoltageSource
           Name          "U_rev"
           Show          on
-          Position      [1005, 425]
+          Position      [1125, 425]
           Direction     down
           Flipped       on
           LabelPosition east
@@ -1544,271 +1463,8 @@ Plecs {
           }
         }
         Component {
-          Type          ThreePhaseMeter
-          Name          "3ph Meter"
-          Show          off
-          Position      [425, 140]
-          Direction     up
-          Flipped       off
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "voltage"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s1"
-          Show          on
-          Position      [505, 105]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s2"
-          Show          on
-          Position      [505, 140]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s3"
-          Show          on
-          Position      [505, 175]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s1"
-          Show          on
-          Position      [580, 105]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s2"
-          Show          on
-          Position      [580, 140]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s3"
-          Show          on
-          Position      [580, 175]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
-          Type          ACVoltageSource
-          Name          "U_ga2"
-          Show          on
-          Position      [290, 445]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "pi/6"
-            Show          off
-          }
-        }
-        Component {
-          Type          ACVoltageSource
-          Name          "U_gb2"
-          Show          on
-          Position      [340, 445]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "pi/6-2*pi/3"
-            Show          off
-          }
-        }
-        Component {
-          Type          ACVoltageSource
-          Name          "U_gc2"
-          Show          on
-          Position      [390, 445]
-          Direction     down
-          Flipped       on
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "V"
-            Value         "u_s"
-            Show          off
-          }
-          Parameter {
-            Variable      "w"
-            Value         "2*pi*50"
-            Show          off
-          }
-          Parameter {
-            Variable      "phi"
-            Value         "pi/6+2*pi/3"
-            Show          off
-          }
-        }
-        Component {
           Type          Thyristor
           Name          "Thy7"
-          Show          on
-          Position      [650, 340]
-          Direction     down
-          Flipped       off
-          LabelPosition east
-          Parameter {
-            Variable      "Vf"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "Ron"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "s_init"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "thermal"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "Rth"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "T_init"
-            Value         ""
-            Show          off
-          }
-        }
-        Component {
-          Type          Thyristor
-          Name          "Thy8"
-          Show          on
-          Position      [885, 485]
-          Direction     down
-          Flipped       off
-          LabelPosition east
-          Parameter {
-            Variable      "Vf"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "Ron"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "s_init"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "thermal"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "Rth"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "T_init"
-            Value         ""
-            Show          off
-          }
-        }
-        Component {
-          Type          Thyristor
-          Name          "Thy9"
           Show          on
           Position      [770, 340]
           Direction     down
@@ -1847,9 +1503,87 @@ Plecs {
         }
         Component {
           Type          Thyristor
+          Name          "Thy8"
+          Show          on
+          Position      [1005, 485]
+          Direction     down
+          Flipped       off
+          LabelPosition east
+          Parameter {
+            Variable      "Vf"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ron"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "Rth"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Thyristor
+          Name          "Thy9"
+          Show          on
+          Position      [890, 340]
+          Direction     down
+          Flipped       off
+          LabelPosition east
+          Parameter {
+            Variable      "Vf"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ron"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "Rth"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Thyristor
           Name          "Thy10"
           Show          on
-          Position      [650, 480]
+          Position      [770, 480]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1888,7 +1622,7 @@ Plecs {
           Type          Thyristor
           Name          "Thy11"
           Show          on
-          Position      [885, 340]
+          Position      [1005, 340]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1927,7 +1661,7 @@ Plecs {
           Type          Thyristor
           Name          "Thy12"
           Show          on
-          Position      [770, 480]
+          Position      [890, 480]
           Direction     down
           Flipped       off
           LabelPosition east
@@ -1966,7 +1700,7 @@ Plecs {
           Type          From
           Name          "From12"
           Show          off
-          Position      [610, 315]
+          Position      [730, 315]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1985,7 +1719,7 @@ Plecs {
           Type          From
           Name          "From13"
           Show          off
-          Position      [840, 465]
+          Position      [960, 465]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2004,7 +1738,7 @@ Plecs {
           Type          From
           Name          "From14"
           Show          off
-          Position      [730, 315]
+          Position      [850, 315]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2023,7 +1757,7 @@ Plecs {
           Type          From
           Name          "From15"
           Show          off
-          Position      [845, 315]
+          Position      [965, 315]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2042,7 +1776,7 @@ Plecs {
           Type          From
           Name          "From16"
           Show          off
-          Position      [730, 460]
+          Position      [850, 460]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2061,7 +1795,7 @@ Plecs {
           Type          From
           Name          "From17"
           Show          off
-          Position      [605, 460]
+          Position      [725, 460]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2077,129 +1811,16 @@ Plecs {
           }
         }
         Component {
-          Type          ThreePhaseMeter
-          Name          "3ph Meter1"
-          Show          off
-          Position      [425, 395]
-          Direction     up
-          Flipped       off
-          LabelPosition southSoutheast
-          Parameter {
-            Variable      "voltage"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s4"
-          Show          on
-          Position      [505, 360]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s5"
-          Show          on
-          Position      [505, 395]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Inductor
-          Name          "L_s6"
-          Show          on
-          Position      [505, 430]
-          Direction     left
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "L"
-            Value         "L_ac"
-            Show          off
-          }
-          Parameter {
-            Variable      "i_init"
-            Value         "0"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s4"
-          Show          on
-          Position      [580, 360]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s5"
-          Show          on
-          Position      [580, 395]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
-          Type          Resistor
-          Name          "R_s6"
-          Show          on
-          Position      [580, 430]
-          Direction     right
-          Flipped       off
-          LabelPosition north
-          Parameter {
-            Variable      "R"
-            Value         "R_ac"
-            Show          off
-          }
-        }
-        Component {
           Type          Inductor
           Name          "L_d"
           Show          on
-          Position      [1005, 165]
+          Position      [1125, 165]
           Direction     up
           Flipped       off
           LabelPosition east
           Parameter {
             Variable      "L"
-            Value         "32e-6"
+            Value         "45.63e-6"
             Show          off
           }
           Parameter {
@@ -2212,12 +1833,12 @@ Plecs {
           Type          PlecsProbe
           Name          "Probe"
           Show          off
-          Position      [1105, 145]
+          Position      [1215, 145]
           Direction     right
           Flipped       off
           LabelPosition south
           Probe {
-            Component     "3ph Meter"
+            Component     "3ph Meter3"
             Path          "12-pulse thyristor rectifier"
             Signals       {"Measured voltage"}
           }
@@ -2226,7 +1847,7 @@ Plecs {
           Type          PlecsProbe
           Name          "Probe1"
           Show          off
-          Position      [1105, 425]
+          Position      [1215, 330]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2245,7 +1866,7 @@ Plecs {
           Type          SignalDemux
           Name          "Demux"
           Show          off
-          Position      [1160, 425]
+          Position      [1270, 330]
           Direction     right
           Flipped       on
           LabelPosition south
@@ -2259,40 +1880,12 @@ Plecs {
           Type          PlecsProbe
           Name          "Probe2"
           Show          off
-          Position      [1105, 270]
+          Position      [1215, 225]
           Direction     right
           Flipped       off
           LabelPosition south
           Probe {
             Component     "3ph Meter"
-            Path          "12-pulse thyristor rectifier"
-            Signals       {"Measured current"}
-          }
-        }
-        Component {
-          Type          PlecsProbe
-          Name          "Probe3"
-          Show          off
-          Position      [1105, 205]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Probe {
-            Component     "3ph Meter1"
-            Path          "12-pulse thyristor rectifier"
-            Signals       {"Measured voltage"}
-          }
-        }
-        Component {
-          Type          PlecsProbe
-          Name          "Probe4"
-          Show          off
-          Position      [1105, 335]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Probe {
-            Component     "3ph Meter1"
             Path          "12-pulse thyristor rectifier"
             Signals       {"Measured current"}
           }
@@ -2595,7 +2188,7 @@ Plecs {
           Type          Output
           Name          "u_g1_abc"
           Show          on
-          Position      [1220, 145]
+          Position      [1310, 145]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2612,9 +2205,9 @@ Plecs {
         }
         Component {
           Type          Output
-          Name          "u_g2_abc"
+          Name          "i_g1_abc"
           Show          on
-          Position      [1220, 205]
+          Position      [1310, 225]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2631,9 +2224,9 @@ Plecs {
         }
         Component {
           Type          Output
-          Name          "i_g1_abc"
+          Name          "U_d"
           Show          on
-          Position      [1220, 270]
+          Position      [1310, 300]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2650,9 +2243,9 @@ Plecs {
         }
         Component {
           Type          Output
-          Name          "i_g2_abc"
+          Name          "I_d"
           Show          on
-          Position      [1220, 335]
+          Position      [1310, 355]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2668,40 +2261,229 @@ Plecs {
           }
         }
         Component {
-          Type          Output
-          Name          "U_d"
+          Type          ACVoltageSource
+          Name          "U_ga1"
           Show          on
-          Position      [1220, 395]
-          Direction     right
-          Flipped       off
-          LabelPosition south
+          Position      [280, 270]
+          Direction     down
+          Flipped       on
+          LabelPosition southSoutheast
           Parameter {
-            Variable      "Index"
-            Value         "7"
-            Show          on
+            Variable      "V"
+            Value         "u_s"
+            Show          off
           }
           Parameter {
-            Variable      "Width"
-            Value         "-1"
+            Variable      "w"
+            Value         "2*pi*50"
+            Show          off
+          }
+          Parameter {
+            Variable      "phi"
+            Value         "0"
             Show          off
           }
         }
         Component {
-          Type          Output
-          Name          "I_d"
+          Type          ACVoltageSource
+          Name          "U_gb1"
           Show          on
-          Position      [1220, 450]
-          Direction     right
-          Flipped       off
-          LabelPosition south
+          Position      [330, 270]
+          Direction     down
+          Flipped       on
+          LabelPosition southSoutheast
           Parameter {
-            Variable      "Index"
-            Value         "8"
-            Show          on
+            Variable      "V"
+            Value         "u_s"
+            Show          off
           }
           Parameter {
-            Variable      "Width"
-            Value         "-1"
+            Variable      "w"
+            Value         "2*pi*50"
+            Show          off
+          }
+          Parameter {
+            Variable      "phi"
+            Value         "-2*pi/3"
+            Show          off
+          }
+        }
+        Component {
+          Type          ACVoltageSource
+          Name          "U_gc1"
+          Show          on
+          Position      [380, 270]
+          Direction     down
+          Flipped       on
+          LabelPosition southSoutheast
+          Parameter {
+            Variable      "V"
+            Value         "u_s"
+            Show          off
+          }
+          Parameter {
+            Variable      "w"
+            Value         "2*pi*50"
+            Show          off
+          }
+          Parameter {
+            Variable      "phi"
+            Value         "2*pi/3"
+            Show          off
+          }
+        }
+        Component {
+          Type          ThreePhaseMeter
+          Name          "3ph Meter"
+          Show          off
+          Position      [415, 220]
+          Direction     up
+          Flipped       off
+          LabelPosition southSoutheast
+          Parameter {
+            Variable      "voltage"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Inductor
+          Name          "L_s1"
+          Show          on
+          Position      [475, 185]
+          Direction     left
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "L"
+            Value         "L_ac"
+            Show          off
+          }
+          Parameter {
+            Variable      "i_init"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Inductor
+          Name          "L_s2"
+          Show          on
+          Position      [475, 220]
+          Direction     left
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "L"
+            Value         "L_ac"
+            Show          off
+          }
+          Parameter {
+            Variable      "i_init"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Inductor
+          Name          "L_s3"
+          Show          on
+          Position      [475, 255]
+          Direction     left
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "L"
+            Value         "L_ac"
+            Show          off
+          }
+          Parameter {
+            Variable      "i_init"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Resistor
+          Name          "R_s1"
+          Show          on
+          Position      [530, 185]
+          Direction     right
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "R"
+            Value         "R_ac"
+            Show          off
+          }
+        }
+        Component {
+          Type          Resistor
+          Name          "R_s2"
+          Show          on
+          Position      [530, 220]
+          Direction     right
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "R"
+            Value         "R_ac"
+            Show          off
+          }
+        }
+        Component {
+          Type          Resistor
+          Name          "R_s3"
+          Show          on
+          Position      [535, 255]
+          Direction     right
+          Flipped       off
+          LabelPosition north
+          Parameter {
+            Variable      "R"
+            Value         "R_ac"
+            Show          off
+          }
+        }
+        Component {
+          Type          ThreePhaseMeter
+          Name          "3ph Meter1"
+          Show          off
+          Position      [740, 120]
+          Direction     up
+          Flipped       off
+          LabelPosition southSoutheast
+          Parameter {
+            Variable      "voltage"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          ThreePhaseMeter
+          Name          "3ph Meter2"
+          Show          off
+          Position      [745, 385]
+          Direction     up
+          Flipped       off
+          LabelPosition southSoutheast
+          Parameter {
+            Variable      "voltage"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          ThreePhaseMeter
+          Name          "3ph Meter3"
+          Show          off
+          Position      [600, 220]
+          Direction     up
+          Flipped       off
+          LabelPosition southSoutheast
+          Parameter {
+            Variable      "voltage"
+            Value         "1"
             Show          off
           }
         }
@@ -2710,24 +2492,24 @@ Plecs {
           SrcComponent  "Components/Electrical/Transformers/Dd Trafo"
           Name          "Dd Trafo"
           Show          on
-          Position      [480, 235]
+          Position      [1320, 630]
           Direction     up
           Flipped       off
           LabelPosition north
           Frame         [-25, -15; 25, 15]
           Parameter {
             Variable      "L"
-            Value         "[2e-3 1e-3]"
+            Value         "[0 7.675e-7]"
             Show          off
           }
           Parameter {
             Variable      "R"
-            Value         "[5 1]"
+            Value         "[0 0]"
             Show          off
           }
           Parameter {
             Variable      "n"
-            Value         "[10 1]"
+            Value         "[1 1]"
             Show          off
           }
           Parameter {
@@ -2797,30 +2579,128 @@ Plecs {
           }
         }
         Component {
+          Type          Reference
+          SrcComponent  "Components/Electrical/Transformers/Dy Trafo"
+          Name          "Dy Trafo"
+          Show          on
+          Position      [1315, 555]
+          Direction     up
+          Flipped       off
+          LabelPosition north
+          Frame         [-25, -15; 25, 15]
+          Parameter {
+            Variable      "L"
+            Value         "[0 7.675e-7]"
+            Show          off
+          }
+          Parameter {
+            Variable      "R"
+            Value         "[0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "n"
+            Value         "[1 0.577]"
+            Show          off
+          }
+          Parameter {
+            Variable      "im"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "phim"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Rfe"
+            Value         "inf"
+            Show          off
+          }
+          Parameter {
+            Variable      "legs"
+            Value         "3"
+            Show          off
+          }
+          Parameter {
+            Variable      "phaseshift"
+            Value         "30"
+            Show          off
+          }
+          Parameter {
+            Variable      "i1"
+            Value         "[0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "i2"
+            Value         "[0 0 0]"
+            Show          off
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [15, 20]
+            Direction     down
+          }
+          Terminal {
+            Type          Port
+            Position      [30, -10]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 0]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 10]
+            Direction     right
+          }
+        }
+        Component {
           Type          Scope
           Name          "Scope"
           Show          on
-          Position      [595, 245]
+          Position      [765, 20]
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [0, 23; 1280, 652]
+          Location      [0, 26; 1280, 655]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
-"wBvAG0AQQByAGUAYQAAAAAA/////wAAAEwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
+"wBvAG0AQQByAGUAYQAAAAAA/////wAAALoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAAAAAA"
 "AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABxAP///wAAB4AAAAON"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAACQAAAJYAAAAIAAAAlgAAAAcAAACWAAAABgAAAJYAAAAFAAAAlgAAAAQAAACWAAAAAwAAAJYAAA"
-"ACAAAAlgAAAAEAAACWAAAAjAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAB"
+"AAAAQAAAJYAAAAIAAAAlgAAAAkAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAA"
+"ACAAAAlgAAAAMAAACWAAAAjAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAB"
 "XAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAA1AAAAAQAAAAAAAAPoAAAAADU="
-          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-          Axes          "1"
-          TimeRange     "0.0"
+          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+"QAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+"AAAA=="
+          Axes          "3"
+          TimeRange     "0"
           ScrollingMode "1"
           SingleTimeAxis "1"
           Open          "0"
@@ -2828,6 +2708,28 @@ Plecs {
           SampleLimit   "0"
           XAxisLabel    "Time / s"
           ShowLegend    "1"
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
           Axis {
             Name          ""
             AutoScale     1
@@ -2855,87 +2757,162 @@ Plecs {
               KeepBaseline  off
               BaselineValue 0
             }
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
           }
         }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_gc1"
-          SrcTerminal   2
-          Points        [390, 255]
-          Branch {
-            Points        [340, 255]
-            Branch {
-              Points        [290, 255; 290, 225]
-              Branch {
-                DstComponent  "U_ga1"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "Dd Trafo"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              Points        [340, 235]
-              Branch {
-                DstComponent  "U_gb1"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "Dd Trafo"
-                DstTerminal   2
-              }
-            }
+        Component {
+          Type          Reference
+          SrcComponent  "Components/Electrical/Transformers/Ydy Trafo"
+          Name          "Ydy Trafo"
+          Show          on
+          Position      [655, 220]
+          Direction     up
+          Flipped       off
+          LabelPosition north
+          Frame         [-25, -30; 25, 30]
+          Parameter {
+            Variable      "L"
+            Value         "[2e-5 6e-6 3.1e-6]"
+            Show          off
           }
-          Branch {
-            Points        [425, 255]
-            Branch {
-              Points        [425, 245]
-              Branch {
-                DstComponent  "3ph Meter"
-                DstTerminal   9
-              }
-              Branch {
-                DstComponent  "Dd Trafo"
-                DstTerminal   3
-              }
-            }
-            Branch {
-              Points        [425, 270; 525, 270]
-              Branch {
-                Points        [530, 270]
-                Branch {
-                  Points        [535, 270; 535, 225]
-                  DstComponent  "Dd Trafo"
-                  DstTerminal   4
-                }
-                Branch {
-                  Points        [530, 245]
-                  DstComponent  "Dd Trafo"
-                  DstTerminal   6
-                }
-              }
-              Branch {
-                Points        [525, 235]
-                DstComponent  "Dd Trafo"
-                DstTerminal   5
-              }
-            }
+          Parameter {
+            Variable      "R"
+            Value         "[0 0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "n"
+            Value         "[2.32 1.73 1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "im"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "phim"
+            Value         "10"
+            Show          off
+          }
+          Parameter {
+            Variable      "Rfe"
+            Value         "inf"
+            Show          off
+          }
+          Parameter {
+            Variable      "legs"
+            Value         "3"
+            Show          off
+          }
+          Parameter {
+            Variable      "phaseshift"
+            Value         "[30 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "i1"
+            Value         "[0 0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "i2"
+            Value         "[0 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "i3"
+            Value         "[0 0 0]"
+            Show          off
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-30, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          Port
+            Position      [-15, 20]
+            Direction     down
+          }
+          Terminal {
+            Type          Port
+            Position      [30, -25]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, -15]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, -5]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 5]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 15]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [30, 25]
+            Direction     right
+          }
+          Terminal {
+            Type          Port
+            Position      [15, 35]
+            Direction     down
           }
         }
         Connection {
           Type          Wire
           SrcComponent  "Thy1"
           SrcTerminal   2
-          Points        [650, 45; 770, 45]
+          Points        [770, 45; 890, 45]
           Branch {
-            Points        [885, 45]
+            Points        [1005, 45]
             Branch {
               DstComponent  "Thy5"
               DstTerminal   2
             }
             Branch {
-              Points        [945, 45]
+              Points        [1065, 45]
               Branch {
                 DstComponent  "Am1"
                 DstTerminal   1
@@ -2955,7 +2932,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From6"
           SrcTerminal   1
-          Points        [620, 60]
+          Points        [740, 60]
           DstComponent  "Thy1"
           DstTerminal   3
         }
@@ -2963,7 +2940,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From7"
           SrcTerminal   1
-          Points        [855, 210]
+          Points        [975, 210]
           DstComponent  "Thy2"
           DstTerminal   3
         }
@@ -2971,7 +2948,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From8"
           SrcTerminal   1
-          Points        [740, 60]
+          Points        [860, 60]
           DstComponent  "Thy3"
           DstTerminal   3
         }
@@ -2979,7 +2956,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From9"
           SrcTerminal   1
-          Points        [855, 60]
+          Points        [975, 60]
           DstComponent  "Thy5"
           DstTerminal   3
         }
@@ -2987,7 +2964,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From10"
           SrcTerminal   1
-          Points        [740, 205]
+          Points        [860, 205]
           DstComponent  "Thy6"
           DstTerminal   3
         }
@@ -2995,37 +2972,9 @@ Plecs {
           Type          Signal
           SrcComponent  "From11"
           SrcTerminal   1
-          Points        [615, 205; 615, 215]
+          Points        [735, 205; 735, 215]
           DstComponent  "Thy4"
           DstTerminal   3
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "Thy6"
-          SrcTerminal   2
-          Points        [770, 140]
-          Branch {
-            DstComponent  "Thy3"
-            DstTerminal   1
-          }
-          Branch {
-            DstComponent  "R_s2"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "Thy5"
-          SrcTerminal   1
-          Points        [885, 175]
-          Branch {
-            DstComponent  "Thy2"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "R_s3"
-            DstTerminal   1
-          }
         }
         Connection {
           Type          Wire
@@ -3036,117 +2985,13 @@ Plecs {
         }
         Connection {
           Type          Wire
-          SrcComponent  "Thy1"
-          SrcTerminal   1
-          Points        [650, 105]
-          Branch {
-            DstComponent  "Thy4"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "R_s1"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_ga1"
-          SrcTerminal   1
-          Points        [290, 100; 390, 100; 390, 130]
-          DstComponent  "3ph Meter"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_gc1"
-          SrcTerminal   1
-          Points        [390, 150]
-          DstComponent  "3ph Meter"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_gb1"
-          SrcTerminal   1
-          Points        [340, 140]
-          DstComponent  "3ph Meter"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "3ph Meter"
-          SrcTerminal   4
-          Points        [460, 130; 460, 105]
-          DstComponent  "L_s1"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "3ph Meter"
-          SrcTerminal   5
-          DstComponent  "L_s2"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s3"
-          SrcTerminal   1
-          Points        [460, 175; 460, 150]
-          DstComponent  "3ph Meter"
-          DstTerminal   6
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s1"
-          SrcTerminal   2
-          DstComponent  "R_s1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s2"
-          SrcTerminal   2
-          DstComponent  "R_s2"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "R_s3"
-          SrcTerminal   2
-          DstComponent  "L_s3"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_ga2"
-          SrcTerminal   2
-          Points        [290, 510; 340, 510]
-          Branch {
-            DstComponent  "U_gb2"
-            DstTerminal   2
-          }
-          Branch {
-            Points        [390, 510]
-            Branch {
-              DstComponent  "U_gc2"
-              DstTerminal   2
-            }
-            Branch {
-              Points        [425, 510]
-              DstComponent  "3ph Meter1"
-              DstTerminal   9
-            }
-          }
-        }
-        Connection {
-          Type          Wire
           SrcComponent  "Thy11"
           SrcTerminal   2
-          Points        [885, 300]
+          Points        [1005, 300]
           Branch {
-            Points        [770, 300]
+            Points        [890, 300]
             Branch {
-              Points        [650, 300]
+              Points        [770, 300]
               Branch {
                 DstComponent  "Thy7"
                 DstTerminal   2
@@ -3174,7 +3019,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From12"
           SrcTerminal   1
-          Points        [620, 315]
+          Points        [740, 315]
           DstComponent  "Thy7"
           DstTerminal   3
         }
@@ -3182,7 +3027,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From13"
           SrcTerminal   1
-          Points        [855, 465]
+          Points        [975, 465]
           DstComponent  "Thy8"
           DstTerminal   3
         }
@@ -3190,7 +3035,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From14"
           SrcTerminal   1
-          Points        [740, 315]
+          Points        [860, 315]
           DstComponent  "Thy9"
           DstTerminal   3
         }
@@ -3198,7 +3043,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From15"
           SrcTerminal   1
-          Points        [855, 315]
+          Points        [975, 315]
           DstComponent  "Thy11"
           DstTerminal   3
         }
@@ -3206,7 +3051,7 @@ Plecs {
           Type          Signal
           SrcComponent  "From16"
           SrcTerminal   1
-          Points        [740, 460]
+          Points        [860, 460]
           DstComponent  "Thy12"
           DstTerminal   3
         }
@@ -3214,154 +3059,45 @@ Plecs {
           Type          Signal
           SrcComponent  "From17"
           SrcTerminal   1
-          Points        [615, 460; 615, 470]
+          Points        [735, 460; 735, 470]
           DstComponent  "Thy10"
           DstTerminal   3
         }
         Connection {
           Type          Wire
-          SrcComponent  "Thy12"
-          SrcTerminal   2
-          Points        [770, 395]
-          Branch {
-            DstComponent  "Thy9"
-            DstTerminal   1
-          }
-          Branch {
-            DstComponent  "R_s5"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "Thy11"
+          SrcComponent  "Thy8"
           SrcTerminal   1
-          Points        [885, 430]
+          Points        [1005, 530]
           Branch {
-            DstComponent  "Thy8"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "R_s6"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "Thy7"
-          SrcTerminal   1
-          Points        [650, 360]
-          Branch {
-            DstComponent  "Thy10"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "R_s4"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_ga2"
-          SrcTerminal   1
-          Points        [290, 355; 390, 355; 390, 385]
-          DstComponent  "3ph Meter1"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_gc2"
-          SrcTerminal   1
-          Points        [390, 405]
-          DstComponent  "3ph Meter1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "U_gb2"
-          SrcTerminal   1
-          Points        [340, 395]
-          DstComponent  "3ph Meter1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "3ph Meter1"
-          SrcTerminal   4
-          Points        [460, 385; 460, 360]
-          DstComponent  "L_s4"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "3ph Meter1"
-          SrcTerminal   5
-          DstComponent  "L_s5"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s6"
-          SrcTerminal   1
-          Points        [460, 430; 460, 405]
-          DstComponent  "3ph Meter1"
-          DstTerminal   6
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s4"
-          SrcTerminal   2
-          DstComponent  "R_s4"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "L_s5"
-          SrcTerminal   2
-          DstComponent  "R_s5"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "R_s6"
-          SrcTerminal   2
-          DstComponent  "L_s6"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Wire
-          SrcComponent  "Thy10"
-          SrcTerminal   1
-          Points        [650, 530; 770, 530]
-          Branch {
-            Points        [885, 530]
+            Points        [890, 530]
             Branch {
-              DstComponent  "Thy8"
+              Points        [770, 530]
+              DstComponent  "Thy10"
               DstTerminal   1
             }
             Branch {
-              Points        [945, 530]
-              Branch {
-                Points        [1005, 530]
-                DstComponent  "U_rev"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "Vm1"
-                DstTerminal   2
-              }
+              DstComponent  "Thy12"
+              DstTerminal   1
             }
           }
           Branch {
-            DstComponent  "Thy12"
-            DstTerminal   1
+            Points        [1065, 530]
+            Branch {
+              Points        [1125, 530]
+              DstComponent  "U_rev"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   2
+            }
           }
         }
         Connection {
           Type          Wire
           SrcComponent  "Am1"
           SrcTerminal   2
-          Points        [1005, 45]
+          Points        [1125, 45]
           DstComponent  "L_d"
           DstTerminal   1
         }
@@ -3390,7 +3126,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Demux"
           SrcTerminal   2
-          Points        [1175, 420; 1175, 395]
+          Points        [1275, 300]
           DstComponent  "U_d"
           DstTerminal   1
         }
@@ -3398,7 +3134,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Demux"
           SrcTerminal   3
-          Points        [1175, 430; 1175, 450]
+          Points        [1275, 355]
           DstComponent  "I_d"
           DstTerminal   1
         }
@@ -3407,13 +3143,6 @@ Plecs {
           SrcComponent  "Probe2"
           SrcTerminal   1
           DstComponent  "i_g1_abc"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Probe4"
-          SrcTerminal   1
-          DstComponent  "i_g2_abc"
           DstTerminal   1
         }
         Connection {
@@ -3525,11 +3254,326 @@ Plecs {
           DstTerminal   1
         }
         Connection {
-          Type          Signal
-          SrcComponent  "Probe3"
+          Type          Wire
+          SrcComponent  "U_gc1"
+          SrcTerminal   2
+          Points        [380, 335]
+          Branch {
+            Points        [330, 335]
+            Branch {
+              Points        [280, 335]
+              DstComponent  "U_ga1"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "U_gb1"
+              DstTerminal   2
+            }
+          }
+          Branch {
+            Points        [415, 335]
+            DstComponent  "3ph Meter"
+            DstTerminal   9
+          }
+          Branch {
+            Points        [380, 405; 600, 405]
+            Branch {
+              DstComponent  "3ph Meter3"
+              DstTerminal   9
+            }
+            Branch {
+              Points        [640, 405]
+              Branch {
+                Points        [670, 405]
+                Branch {
+                  DstComponent  "Ydy Trafo"
+                  DstTerminal   11
+                }
+                Branch {
+                  Points        [740, 405]
+                  Branch {
+                    DstComponent  "3ph Meter2"
+                    DstTerminal   9
+                  }
+                  Branch {
+                    DstComponent  "3ph Meter1"
+                    DstTerminal   9
+                  }
+                }
+              }
+              Branch {
+                DstComponent  "Ydy Trafo"
+                DstTerminal   4
+              }
+            }
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "U_ga1"
           SrcTerminal   1
-          DstComponent  "u_g2_abc"
+          Points        [280, 180; 380, 180; 380, 210]
+          DstComponent  "3ph Meter"
           DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "U_gc1"
+          SrcTerminal   1
+          Points        [380, 230]
+          DstComponent  "3ph Meter"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "U_gb1"
+          SrcTerminal   1
+          Points        [330, 220]
+          DstComponent  "3ph Meter"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "L_s1"
+          SrcTerminal   2
+          DstComponent  "R_s1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "L_s2"
+          SrcTerminal   2
+          DstComponent  "R_s2"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "R_s3"
+          SrcTerminal   2
+          DstComponent  "L_s3"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "L_s1"
+          SrcTerminal   1
+          Points        [445, 185; 445, 210]
+          DstComponent  "3ph Meter"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "L_s2"
+          SrcTerminal   1
+          DstComponent  "3ph Meter"
+          DstTerminal   5
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "L_s3"
+          SrcTerminal   1
+          Points        [445, 255; 445, 230]
+          DstComponent  "3ph Meter"
+          DstTerminal   6
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy5"
+          SrcTerminal   1
+          Points        [1005, 130]
+          Branch {
+            DstComponent  "Thy2"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "3ph Meter1"
+            DstTerminal   6
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy6"
+          SrcTerminal   2
+          Points        [890, 120]
+          Branch {
+            DstComponent  "Thy3"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "3ph Meter1"
+            DstTerminal   5
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy1"
+          SrcTerminal   1
+          Points        [770, 110]
+          Branch {
+            DstComponent  "Thy4"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "3ph Meter1"
+            DstTerminal   4
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy12"
+          SrcTerminal   2
+          Points        [890, 385]
+          Branch {
+            DstComponent  "Thy9"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "3ph Meter2"
+            DstTerminal   5
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy11"
+          SrcTerminal   1
+          Points        [1005, 395]
+          Branch {
+            DstComponent  "Thy8"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "3ph Meter2"
+            DstTerminal   6
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Thy7"
+          SrcTerminal   1
+          Points        [770, 375]
+          Branch {
+            DstComponent  "3ph Meter2"
+            DstTerminal   4
+          }
+          Branch {
+            DstComponent  "Thy10"
+            DstTerminal   2
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "3ph Meter3"
+          SrcTerminal   1
+          Points        [570, 210; 570, 185]
+          DstComponent  "R_s1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "3ph Meter3"
+          SrcTerminal   2
+          DstComponent  "R_s2"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "3ph Meter3"
+          SrcTerminal   3
+          Points        [570, 230; 570, 255]
+          DstComponent  "R_s3"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   1
+          DstComponent  "3ph Meter3"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   2
+          DstComponent  "3ph Meter3"
+          DstTerminal   5
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   3
+          DstComponent  "3ph Meter3"
+          DstTerminal   6
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   5
+          Points        [700, 195; 700, 375]
+          DstComponent  "3ph Meter2"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   6
+          Points        [695, 205; 695, 385]
+          DstComponent  "3ph Meter2"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   7
+          Points        [690, 215; 690, 395]
+          DstComponent  "3ph Meter2"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   8
+          Points        [700, 225; 700, 110]
+          DstComponent  "3ph Meter1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   9
+          Points        [705, 235; 705, 120]
+          DstComponent  "3ph Meter1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Ydy Trafo"
+          SrcTerminal   10
+          Points        [710, 245; 710, 130]
+          DstComponent  "3ph Meter1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "3ph Meter3"
+          SrcTerminal   7
+          Points        [595, 10]
+          DstComponent  "Scope"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "3ph Meter1"
+          SrcTerminal   7
+          DstComponent  "Scope"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "3ph Meter2"
+          SrcTerminal   7
+          Points        [720, 365; 720, 30]
+          DstComponent  "Scope"
+          DstTerminal   3
         }
       }
     }
@@ -3601,7 +3645,7 @@ Plecs {
       }
       Parameter {
         Variable      "theta0"
-        Value         "0"
+        Value         "pi/6"
         Show          off
       }
       Parameter {
@@ -3687,20 +3731,19 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [8, 31; 1272, 644]
+      Location      [0, 26; 1280, 655]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAIMA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAdoAAAA2Pw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB2gAAABxAP///wAAB2gAAAKXAAAA"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAeAAAAAwvw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABxAP///wAAB4AAAALFAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAJYAAAACAAAAlgAAAAEAAACWAAAABwAAAJYAAAAGAAAAlgAAAAUAAACWAAAABAAAAJYAAAAJAA"
-"AAlgAAAAgAAACWAAAHaAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAD2AAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AZyAAAAAQAAAAAAAAPoAAAAADU="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALcAMAAAAFAAAAC"
+"AAAAJYAAAAJAAAAlgAAAAYAAACWAAAABAAAAJYAAAAFAAAAlgAAB4AAAAALAQAAAQAAAAAAAAAAAA"
+"AAAJb/////AAAAgQAAAAAAAAALAAAA9gAAAAEAAAAAAAAAlgAAAAEAAAAAAAAAlgAAAAEAAAAAAAA"
+"AlgAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAlgAAAAEAAAAA"
+"AAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAEMgAAAAEAAAAAAAAD6AAAAAA1"
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -3844,12 +3887,12 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"AAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAAAAlgAAAAkAAACWAAAAAQAAAJYAAAACAA"
-"AAlgAAAAMAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEfAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAJYAAAAIAAAAlgAAAAkAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAACAA"
+"AAlgAAAAMAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEqAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AZHAAAAAQAAAAAAAAPoAAAAADU="
+"AY8AAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -3926,7 +3969,7 @@ Plecs {
       Type          SignalDemux
       Name          "Demux1"
       Show          off
-      Position      [705, 190]
+      Position      [705, 175]
       Direction     right
       Flipped       on
       LabelPosition south
@@ -3966,12 +4009,12 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"AAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAAAAlgAAAAkAAACWAAAAAQAAAJYAAAACAA"
-"AAlgAAAAMAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"gAAAJYAAAADAAAAlgAAAAEAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAAIAA"
+"AAlgAAAAkAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEpAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AcPAAAAAQAAAAAAAAPoAAAAADU="
+"AY9AAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -4062,32 +4105,13 @@ Plecs {
       Type          Goto
       Name          "Goto7"
       Show          off
-      Position      [545, 100]
+      Position      [550, 175]
       Direction     right
       Flipped       off
       LabelPosition south
       Parameter {
         Variable      "Tag"
         Value         "i_g1_abc"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          Goto
-      Name          "Goto8"
-      Show          off
-      Position      [545, 125]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "i_g2_abc"
         Show          off
       }
       Parameter {
@@ -4111,29 +4135,10 @@ Plecs {
       }
     }
     Component {
-      Type          From
-      Name          "From9"
-      Show          off
-      Position      [730, 315]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "i_g1_abc"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
       Type          Subsystem
       Name          "Angle detector"
       Show          on
-      Position      [425, 505]
+      Position      [460, 665]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -4655,10 +4660,933 @@ Plecs {
       }
     }
     Component {
+      Type          From
+      Name          "From10"
+      Show          off
+      Position      [735, 490]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G7"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From11"
+      Show          off
+      Position      [735, 515]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G8"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From12"
+      Show          off
+      Position      [735, 540]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G9"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From13"
+      Show          off
+      Position      [735, 560]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From14"
+      Show          off
+      Position      [735, 580]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G11"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From15"
+      Show          off
+      Position      [735, 605]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "G12"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_ga1"
+      Show          on
+      Position      [1005, 575]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "u_s"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_gb1"
+      Show          on
+      Position      [1055, 575]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "u_s"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "-2*pi/3"
+        Show          off
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_gc1"
+      Show          on
+      Position      [1105, 575]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "u_s"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "2*pi/3"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R1"
+      Show          on
+      Position      [1370, 550]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R2"
+      Show          on
+      Position      [1345, 555]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R3"
+      Show          on
+      Position      [1320, 560]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter"
+      Show          off
+      Position      [1280, 525]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter1"
+      Show          off
+      Position      [1140, 525]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Electrical/Transformers/Dy Trafo"
+      Name          "Dy Trafo"
+      Show          on
+      Position      [1215, 525]
+      Direction     up
+      Flipped       off
+      LabelPosition north
+      Frame         [-25, -15; 25, 15]
+      Parameter {
+        Variable      "L"
+        Value         "[7.675e-7 7.675e-7]"
+        Show          off
+      }
+      Parameter {
+        Variable      "R"
+        Value         "[2 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[1 0.57]"
+        Show          off
+      }
+      Parameter {
+        Variable      "im"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "phim"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Rfe"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "legs"
+        Value         "3"
+        Show          off
+      }
+      Parameter {
+        Variable      "phaseshift"
+        Value         "30"
+        Show          off
+      }
+      Parameter {
+        Variable      "i1"
+        Value         "[0 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i2"
+        Value         "[0 0 0]"
+        Show          off
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [15, 20]
+        Direction     down
+      }
+      Terminal {
+        Type          Port
+        Position      [30, -10]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 10]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Electrical/Transformers/Dd Trafo"
+      Name          "Dd Trafo"
+      Show          on
+      Position      [1215, 415]
+      Direction     up
+      Flipped       off
+      LabelPosition north
+      Frame         [-25, -15; 25, 15]
+      Parameter {
+        Variable      "L"
+        Value         "[7.675e-7 7.675e-7]"
+        Show          off
+      }
+      Parameter {
+        Variable      "R"
+        Value         "[1 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[1 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "im"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "phim"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Rfe"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "legs"
+        Value         "3"
+        Show          off
+      }
+      Parameter {
+        Variable      "phaseshift"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "i1"
+        Value         "[0 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i2"
+        Value         "[0 0]"
+        Show          off
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [30, -10]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 10]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R7"
+      Show          on
+      Position      [1415, 560]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R8"
+      Show          on
+      Position      [1445, 560]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R9"
+      Show          on
+      Position      [1475, 560]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter3"
+      Show          off
+      Position      [1315, 415]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Electrical/Transformers/Ydy Trafo"
+      Name          "Ydy Trafo"
+      Show          on
+      Position      [1230, 870]
+      Direction     up
+      Flipped       off
+      LabelPosition north
+      Frame         [-25, -30; 25, 30]
+      Parameter {
+        Variable      "L"
+        Value         "[2e-5 6e-6 3.1e-6]"
+        Show          off
+      }
+      Parameter {
+        Variable      "R"
+        Value         "[0.1 3.6e-4 3.6e-4]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[2.32 1.73 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "im"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "phim"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Rfe"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "legs"
+        Value         "3"
+        Show          off
+      }
+      Parameter {
+        Variable      "phaseshift"
+        Value         "[30 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i1"
+        Value         "[0 0 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i2"
+        Value         "[0 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i3"
+        Value         "[0 0 0]"
+        Show          off
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-15, 20]
+        Direction     down
+      }
+      Terminal {
+        Type          Port
+        Position      [30, -25]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, -15]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, -5]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 5]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 15]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [30, 25]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [15, 35]
+        Direction     down
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_ga2"
+      Show          on
+      Position      [1020, 920]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "326.6"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_gb2"
+      Show          on
+      Position      [1070, 920]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "326.6"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "-2*pi/3"
+        Show          off
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "U_gc2"
+      Show          on
+      Position      [1120, 920]
+      Direction     down
+      Flipped       on
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "V"
+        Value         "326.6"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*50"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "2*pi/3"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R4"
+      Show          on
+      Position      [1385, 895]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R5"
+      Show          on
+      Position      [1360, 900]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R6"
+      Show          on
+      Position      [1335, 905]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter2"
+      Show          off
+      Position      [1310, 870]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter4"
+      Show          off
+      Position      [1155, 870]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R10"
+      Show          on
+      Position      [1430, 905]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R11"
+      Show          on
+      Position      [1460, 905]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R12"
+      Show          on
+      Position      [1490, 905]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "100"
+        Show          off
+      }
+    }
+    Component {
+      Type          ThreePhaseMeter
+      Name          "3ph Meter5"
+      Show          off
+      Position      [1330, 760]
+      Direction     up
+      Flipped       off
+      LabelPosition southSoutheast
+      Parameter {
+        Variable      "voltage"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope2"
+      Show          on
+      Position      [1395, 695]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [0, 26; 1280, 655]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAALoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAeAAAAArvw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABxAP///wAAB4AAAALZAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAJYAAAAIAAAAlgAAAAkAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAACAA"
+"AAlgAAAAMAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEzAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AYzAAAAAQAAAAAAAAPoAAAAADU="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+"=="
+      Axes          "3"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
       Type          Subsystem
       Name          "Pulse generator with fixed firing angle"
       Show          on
-      Position      [275, 505]
+      Position      [290, 650]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -4677,7 +5605,7 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [0, 26; 1280, 609]
+        Location      [0, 26; 1280, 604]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -5007,143 +5935,416 @@ Plecs {
       }
     }
     Component {
-      Type          From
-      Name          "From10"
-      Show          off
-      Position      [735, 490]
-      Direction     right
+      Type          Subsystem
+      Name          "Pulse generator with fixed firing angle1"
+      Show          on
+      Position      [285, 745]
+      Direction     up
       Flipped       off
       LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G7"
-        Show          off
+      CommentOut    DisabledOpenCircuit
+      Frame         [-25, -15; 25, 15]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Output
+        Position      [29, -5]
+        Direction     right
       }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          From
-      Name          "From11"
-      Show          off
-      Position      [735, 515]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G8"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          From
-      Name          "From12"
-      Show          off
-      Position      [735, 540]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G9"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          From
-      Name          "From13"
-      Show          off
-      Position      [735, 560]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G10"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          From
-      Name          "From14"
-      Show          off
-      Position      [735, 580]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G11"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          From
-      Name          "From15"
-      Show          off
-      Position      [735, 605]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Tag"
-        Value         "G12"
-        Show          off
-      }
-      Parameter {
-        Variable      "Visibility"
-        Value         "1"
-        Show          off
+      Schematic {
+        Location      [0, 26; 1280, 603]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator"
+          Show          on
+          Position      [150, 45]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+30)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator1"
+          Show          on
+          Position      [150, 135]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+90)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator2"
+          Show          on
+          Position      [150, 235]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+150)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator3"
+          Show          on
+          Position      [150, 305]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+210)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator4"
+          Show          on
+          Position      [150, 395]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+270)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          PulseGenerator
+          Name          "Pulse\nGenerator5"
+          Show          on
+          Position      [150, 485]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Hi"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Lo"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "50"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "d"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "(a+330)*T_s/360"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalMux
+          Name          "Mux"
+          Show          off
+          Position      [355, 245]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "6"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "pulses"
+          Show          on
+          Position      [450, 245]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator"
+          SrcTerminal   1
+          Points        [220, 45; 220, 105; 305, 105; 305, 220]
+          DstComponent  "Mux"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator1"
+          SrcTerminal   1
+          Points        [275, 135; 275, 225; 340, 225]
+          DstComponent  "Mux"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator2"
+          SrcTerminal   1
+          Points        [275, 235; 275, 240]
+          DstComponent  "Mux"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator3"
+          SrcTerminal   1
+          Points        [275, 305; 275, 250]
+          DstComponent  "Mux"
+          DstTerminal   5
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator4"
+          SrcTerminal   1
+          Points        [290, 395; 290, 260]
+          DstComponent  "Mux"
+          DstTerminal   6
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Pulse\nGenerator5"
+          SrcTerminal   1
+          Points        [305, 485; 305, 270]
+          DstComponent  "Mux"
+          DstTerminal   7
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Mux"
+          SrcTerminal   1
+          DstComponent  "pulses"
+          DstTerminal   1
+        }
       }
     }
     Component {
       Type          Reference
-      SrcComponent  "Components/Electrical/Converters/2-Level\\nIGBT\\nConv."
-      Name          "2-Level\nIGBT\nConv."
+      SrcComponent  "Components/Electrical/Transformers/Yd Trafo"
+      Name          "Yd Trafo"
       Show          on
-      Position      [620, 495]
+      Position      [760, 800]
       Direction     up
       Flipped       off
-      LabelPosition east
+      LabelPosition north
       CommentOut    DisabledOpenCircuit
-      Frame         [-25, -25; 25, 25]
+      Frame         [-25, -15; 25, 15]
       Parameter {
-        Variable      "therm"
-        Value         ""
+        Variable      "L"
+        Value         "[2e-3 1e-3]"
         Show          off
       }
       Parameter {
-        Variable      "Rth"
-        Value         "0"
+        Variable      "R"
+        Value         "[5 1]"
         Show          off
       }
       Parameter {
-        Variable      "T_init"
-        Value         "0"
+        Variable      "n"
+        Value         "[10 sqrt(3)]"
+        Show          off
+      }
+      Parameter {
+        Variable      "im"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "phim"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Rfe"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "legs"
+        Value         "3"
+        Show          off
+      }
+      Parameter {
+        Variable      "phaseshift"
+        Value         "150"
+        Show          off
+      }
+      Parameter {
+        Variable      "i1"
+        Value         "[0 0 0]"
+        Show          off
+      }
+      Parameter {
+        Variable      "i2"
+        Value         "[0 0]"
         Show          off
       }
       Terminal {
@@ -5162,96 +6363,24 @@ Plecs {
         Direction     left
       }
       Terminal {
-        Type          Input
-        Position      [-15, -25]
-        Direction     up
-      }
-      Terminal {
         Type          Port
-        Position      [0, -30]
-        Direction     up
-      }
-      Terminal {
-        Type          Port
-        Position      [0, 30]
+        Position      [-15, 20]
         Direction     down
       }
-    }
-    Component {
-      Type          Reference
-      SrcComponent  "Components/Control/Modulators/Space Vector PWM"
-      Name          "Space Vector PWM"
-      Show          on
-      Position      [515, 475]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      CommentOut    DisabledOpenCircuit
-      Frame         [-20, -20; 20, 20]
-      Parameter {
-        Variable      "pattern"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "fs"
-        Value         "10e3"
-        Show          off
-      }
-      Parameter {
-        Variable      "output_values"
-        Value         "[-1 1]"
-        Show          off
-      }
       Terminal {
-        Type          Output
-        Position      [24, 0]
+        Type          Port
+        Position      [30, -10]
         Direction     right
       }
       Terminal {
-        Type          Input
-        Position      [-20, -10]
-        Direction     left
+        Type          Port
+        Position      [30, 0]
+        Direction     right
       }
       Terminal {
-        Type          Input
-        Position      [-20, 10]
-        Direction     left
-      }
-    }
-    Component {
-      Type          Transformer
-      Name          "Tr3"
-      Show          on
-      Position      [110, 515]
-      Direction     right
-      Flipped       on
-      LabelPosition south
-      CommentOut    DisabledOpenCircuit
-      Parameter {
-        Variable      "Windings"
-        Value         "[1 2]"
-        Show          off
-      }
-      Parameter {
-        Variable      "n"
-        Value         "[2 1 1]"
-        Show          off
-      }
-      Parameter {
-        Variable      "Polarity"
-        Value         "+"
-        Show          off
-      }
-      Parameter {
-        Variable      "Lm"
-        Value         "inf"
-        Show          off
-      }
-      Parameter {
-        Variable      "im0"
-        Value         "0"
-        Show          off
+        Type          Port
+        Position      [30, 10]
+        Direction     right
       }
     }
     Connection {
@@ -5318,26 +6447,10 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "6-Pulse\nGenerator Level-1"
-      SrcTerminal   4
-      Points        [365, 95; 365, 155]
-      DstComponent  "12-pulse thyristor rectifier"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Clock"
       SrcTerminal   1
       DstComponent  "1D-Table"
       DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "6-Pulse\nGenerator Level-2"
-      SrcTerminal   4
-      Points        [365, 230; 365, 165]
-      DstComponent  "12-pulse thyristor rectifier"
-      DstTerminal   2
     }
     Connection {
       Type          Signal
@@ -5402,7 +6515,7 @@ Plecs {
     Connection {
       Type          Signal
       SrcComponent  "12-pulse thyristor rectifier"
-      SrcTerminal   8
+      SrcTerminal   6
       Points        [600, 205]
       Branch {
         Points        [600, 265]
@@ -5425,7 +6538,7 @@ Plecs {
     Connection {
       Type          Signal
       SrcComponent  "12-pulse thyristor rectifier"
-      SrcTerminal   7
+      SrcTerminal   5
       DstComponent  "Goto6"
       DstTerminal   1
     }
@@ -5450,29 +6563,20 @@ Plecs {
       SrcTerminal   3
       Points        [620, 155; 620, 180]
       Branch {
-        Points        [620, 440; 75, 440; 75, 105]
-        DstComponent  "PLL1"
-        DstTerminal   1
+        Points        [620, 440; 75, 440; 75, 240]
+        Branch {
+          Points        [75, 105]
+          DstComponent  "PLL1"
+          DstTerminal   1
+        }
+        Branch {
+          DstComponent  "PLL2"
+          DstTerminal   1
+        }
       }
       Branch {
-        Points        [655, 180; 655, 190]
+        Points        [655, 180; 655, 175]
         DstComponent  "Demux1"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "12-pulse thyristor rectifier"
-      SrcTerminal   4
-      Points        [610, 165; 610, 230]
-      Branch {
-        Points        [610, 420; 95, 420]
-        DstComponent  "PLL2"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [655, 230; 655, 220]
-        DstComponent  "Demux2"
         DstTerminal   1
       }
     }
@@ -5480,6 +6584,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Demux1"
       SrcTerminal   2
+      Points        [785, 165; 785, 180]
       DstComponent  "Mux1"
       DstTerminal   3
     }
@@ -5487,6 +6592,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Demux1"
       SrcTerminal   3
+      Points        [780, 175; 780, 190]
       DstComponent  "Mux1"
       DstTerminal   4
     }
@@ -5494,6 +6600,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Demux1"
       SrcTerminal   4
+      Points        [775, 185; 775, 200]
       DstComponent  "Mux1"
       DstTerminal   5
     }
@@ -5556,17 +6663,8 @@ Plecs {
     Connection {
       Type          Signal
       SrcComponent  "12-pulse thyristor rectifier"
-      SrcTerminal   5
-      Points        [520, 175; 520, 100]
+      SrcTerminal   4
       DstComponent  "Goto7"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "12-pulse thyristor rectifier"
-      SrcTerminal   6
-      Points        [525, 185]
-      DstComponent  "Goto8"
       DstTerminal   1
     }
     Connection {
@@ -5589,13 +6687,6 @@ Plecs {
       SrcTerminal   4
       DstComponent  "Mux2"
       DstTerminal   8
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "From9"
-      SrcTerminal   1
-      DstComponent  "Demux4"
-      DstTerminal   1
     }
     Connection {
       Type          Signal
@@ -5645,30 +6736,547 @@ Plecs {
       DstComponent  "Scope"
       DstTerminal   12
     }
+    Connection {
+      Type          Wire
+      SrcComponent  "R3"
+      SrcTerminal   2
+      Points        [1320, 640]
+      Branch {
+        Points        [1315, 640]
+        Branch {
+          Points        [1280, 640]
+          Branch {
+            Points        [1230, 640]
+            Branch {
+              Points        [1140, 640]
+              Branch {
+                Points        [1105, 640]
+                Branch {
+                  DstComponent  "U_gc1"
+                  DstTerminal   2
+                }
+                Branch {
+                  Points        [1055, 640]
+                  Branch {
+                    Points        [1005, 640]
+                    DstComponent  "U_ga1"
+                    DstTerminal   2
+                  }
+                  Branch {
+                    DstComponent  "U_gb1"
+                    DstTerminal   2
+                  }
+                }
+              }
+              Branch {
+                DstComponent  "3ph Meter1"
+                DstTerminal   9
+              }
+            }
+            Branch {
+              DstComponent  "Dy Trafo"
+              DstTerminal   4
+            }
+          }
+          Branch {
+            DstComponent  "3ph Meter"
+            DstTerminal   9
+          }
+        }
+        Branch {
+          DstComponent  "3ph Meter3"
+          DstTerminal   9
+        }
+      }
+      Branch {
+        Points        [1345, 640]
+        Branch {
+          DstComponent  "R2"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [1370, 640]
+          Branch {
+            DstComponent  "R1"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [1415, 640]
+            Branch {
+              Points        [1445, 640]
+              Branch {
+                Points        [1475, 640]
+                DstComponent  "R9"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "R8"
+                DstTerminal   2
+              }
+            }
+            Branch {
+              DstComponent  "R7"
+              DstTerminal   2
+            }
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter"
+      SrcTerminal   1
+      DstComponent  "Dy Trafo"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Dy Trafo"
+      SrcTerminal   6
+      DstComponent  "3ph Meter"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Dy Trafo"
+      SrcTerminal   7
+      DstComponent  "3ph Meter"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter"
+      SrcTerminal   4
+      Points        [1370, 515]
+      DstComponent  "R1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R2"
+      SrcTerminal   1
+      Points        [1345, 525]
+      DstComponent  "3ph Meter"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter"
+      SrcTerminal   6
+      Points        [1320, 535]
+      DstComponent  "R3"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter1"
+      SrcTerminal   4
+      DstComponent  "Dy Trafo"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter1"
+      SrcTerminal   5
+      DstComponent  "Dy Trafo"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter1"
+      SrcTerminal   6
+      DstComponent  "Dy Trafo"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_ga1"
+      SrcTerminal   1
+      Points        [1005, 515]
+      Branch {
+        DstComponent  "3ph Meter1"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [1005, 405]
+        DstComponent  "Dd Trafo"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_gb1"
+      SrcTerminal   1
+      Points        [1055, 525]
+      Branch {
+        DstComponent  "3ph Meter1"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [1055, 415]
+        DstComponent  "Dd Trafo"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_gc1"
+      SrcTerminal   1
+      Points        [1105, 535]
+      Branch {
+        DstComponent  "3ph Meter1"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [1105, 425]
+        DstComponent  "Dd Trafo"
+        DstTerminal   3
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   1
+      DstComponent  "Dd Trafo"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   2
+      DstComponent  "Dd Trafo"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   3
+      DstComponent  "Dd Trafo"
+      DstTerminal   6
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   4
+      Points        [1475, 405]
+      DstComponent  "R9"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   5
+      Points        [1445, 415]
+      DstComponent  "R8"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter3"
+      SrcTerminal   6
+      Points        [1415, 425]
+      DstComponent  "R7"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R6"
+      SrcTerminal   2
+      Points        [1335, 985]
+      Branch {
+        Points        [1330, 985]
+        Branch {
+          Points        [1295, 985]
+          Branch {
+            Points        [1245, 985]
+            Branch {
+              Points        [1215, 985]
+              Branch {
+                Points        [1155, 985]
+                Branch {
+                  Points        [1120, 985]
+                  Branch {
+                    DstComponent  "U_gc2"
+                    DstTerminal   2
+                  }
+                  Branch {
+                    Points        [1070, 985]
+                    Branch {
+                      Points        [1020, 985]
+                      DstComponent  "U_ga2"
+                      DstTerminal   2
+                    }
+                    Branch {
+                      DstComponent  "U_gb2"
+                      DstTerminal   2
+                    }
+                  }
+                }
+                Branch {
+                  DstComponent  "3ph Meter4"
+                  DstTerminal   9
+                }
+              }
+              Branch {
+                DstComponent  "Ydy Trafo"
+                DstTerminal   4
+              }
+            }
+            Branch {
+              DstComponent  "Ydy Trafo"
+              DstTerminal   11
+            }
+          }
+          Branch {
+            Points        [1295, 940; 1310, 940]
+            DstComponent  "3ph Meter2"
+            DstTerminal   9
+          }
+        }
+        Branch {
+          DstComponent  "3ph Meter5"
+          DstTerminal   9
+        }
+      }
+      Branch {
+        Points        [1360, 985]
+        Branch {
+          DstComponent  "R5"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [1385, 985]
+          Branch {
+            DstComponent  "R4"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [1430, 985]
+            Branch {
+              Points        [1460, 985]
+              Branch {
+                Points        [1490, 985]
+                DstComponent  "R12"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "R11"
+                DstTerminal   2
+              }
+            }
+            Branch {
+              DstComponent  "R10"
+              DstTerminal   2
+            }
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   4
+      Points        [1385, 860]
+      DstComponent  "R4"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R5"
+      SrcTerminal   1
+      Points        [1360, 870]
+      DstComponent  "3ph Meter2"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   6
+      Points        [1335, 880]
+      DstComponent  "R6"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter4"
+      SrcTerminal   4
+      DstComponent  "Ydy Trafo"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter4"
+      SrcTerminal   5
+      DstComponent  "Ydy Trafo"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter4"
+      SrcTerminal   6
+      DstComponent  "Ydy Trafo"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   4
+      Points        [1490, 750]
+      DstComponent  "R12"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   5
+      Points        [1460, 760]
+      DstComponent  "R11"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   6
+      Points        [1430, 770]
+      DstComponent  "R10"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_ga2"
+      SrcTerminal   1
+      Points        [1020, 860]
+      DstComponent  "3ph Meter4"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_gb2"
+      SrcTerminal   1
+      Points        [1070, 870]
+      DstComponent  "3ph Meter4"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "U_gc2"
+      SrcTerminal   1
+      Points        [1120, 880]
+      DstComponent  "3ph Meter4"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Ydy Trafo"
+      SrcTerminal   5
+      Points        [1260, 750]
+      DstComponent  "3ph Meter5"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   2
+      Points        [1265, 760; 1265, 855]
+      DstComponent  "Ydy Trafo"
+      DstTerminal   6
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   3
+      Points        [1270, 770; 1270, 865]
+      DstComponent  "Ydy Trafo"
+      DstTerminal   7
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   1
+      Points        [1275, 860; 1275, 875]
+      DstComponent  "Ydy Trafo"
+      DstTerminal   8
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   2
+      Points        [1280, 870; 1280, 885]
+      DstComponent  "Ydy Trafo"
+      DstTerminal   9
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   3
+      Points        [1285, 880; 1285, 895]
+      DstComponent  "Ydy Trafo"
+      DstTerminal   10
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "3ph Meter4"
+      SrcTerminal   7
+      Points        [1150, 685]
+      DstComponent  "Scope2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "3ph Meter5"
+      SrcTerminal   7
+      Points        [1325, 695]
+      DstComponent  "Scope2"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "3ph Meter2"
+      SrcTerminal   7
+      Points        [1305, 705]
+      DstComponent  "Scope2"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "6-Pulse\nGenerator Level-1"
+      SrcTerminal   4
+      Points        [360, 95; 360, 155]
+      DstComponent  "12-pulse thyristor rectifier"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "6-Pulse\nGenerator Level-2"
+      SrcTerminal   4
+      Points        [360, 230; 360, 165]
+      DstComponent  "12-pulse thyristor rectifier"
+      DstTerminal   2
+    }
     Annotation {
       Name          "<html><body>\n<p align=\"center\"><span style=\" font-siz"
 "e:14px; font-weight:600;\">System Parameters</span></p></body></html>"
-      Position      [1030, 200]
+      Position      [1035, 20]
     } 
     Annotation {
       Name          "<html><body>\n<p>From Koponen Paper</p></body></html>"
-      Position      [1005, 230]
+      Position      [1010, 50]
     } 
     Annotation {
       Name          "<html><body>\n<p>Grid parameters:</p>\n<p>(1) U_ac = 150 "
 "V (L-L RMS)</p>\n<p>(2) L_ac = 6.3e-6 H</p></body></html>"
-      Position      [1020, 360]
+      Position      [1025, 180]
     } 
     Annotation {
       Name          "<html><body>\n<p>DC output filter:</p>\n<p>(1) DC output "
 "filter inductor = 32e-6 H</p></body></html>"
-      Position      [1045, 410]
+      Position      [1050, 230]
     } 
     Annotation {
       Name          "<html><body>\n<p>Electrolyzer parameters:</p>\n<p>(1) U_r"
 "ev = 150 V</p>\n<p>(2) R = 10e-3 ohms</p>\n<p>(3) Rated U_stack = 200 V</p>\n"
 "<p>(4) Rated I_stack = 5000 A</p></body></html>"
-      Position      [1020, 290]
+      Position      [1025, 110]
     } 
   }
 }
