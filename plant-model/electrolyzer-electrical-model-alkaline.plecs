@@ -23,7 +23,9 @@ Plecs {
   MaxConsecutiveZCs "1000"
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
-  InitializationCommands ""
+  InitializationCommands "N_s = 22\nA = 300\nr1 = 0.5955\nr2 = -3.408e-3\nr3 ="
+" -1.070\nr4 = 27.08\nN_E = 2\ns_1_a = 2.523e-2\ns_2_a = -2.340e-4\ns_3_a = 3."
+"183e-6\n"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -59,7 +61,7 @@ Plecs {
     Index         "3"
   }
   Schematic {
-    Location      [0, 26; 1280, 635]
+    Location      [8, 31; 1272, 626]
     ZoomFactor    1.49863
     SliderPosition [0, -1]
     ShowBrowser   off
@@ -95,8 +97,13 @@ Plecs {
         Position      [-35, -20]
         Direction     left
       }
+      Terminal {
+        Type          Input
+        Position      [-35, -10]
+        Direction     left
+      }
       Schematic {
-        Location      [0, 26; 1280, 630]
+        Location      [0, 26; 1280, 620]
         ZoomFactor    1.71498
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2886,11 +2893,6 @@ Plecs {
             Direction     left
           }
           Terminal {
-            Type          Input
-            Position      [-40, -5]
-            Direction     left
-          }
-          Terminal {
             Type          Output
             Position      [44, -35]
             Direction     right
@@ -2906,7 +2908,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 623]
+            Location      [0, 26; 1280, 619]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -3037,25 +3039,6 @@ Plecs {
               }
             }
             Component {
-              Type          Input
-              Name          "p_o"
-              Show          on
-              Position      [290, 245]
-              Direction     right
-              Flipped       off
-              LabelPosition south
-              Parameter {
-                Variable      "Index"
-                Value         "2"
-                Show          on
-              }
-              Parameter {
-                Variable      "Width"
-                Value         "-1"
-                Show          off
-              }
-            }
-            Component {
               Type          Output
               Name          "p_cor"
               Show          on
@@ -3065,7 +3048,7 @@ Plecs {
               LabelPosition south
               Parameter {
                 Variable      "Index"
-                Value         "3"
+                Value         "2"
                 Show          on
               }
               Parameter {
@@ -3084,7 +3067,7 @@ Plecs {
               LabelPosition south
               Parameter {
                 Variable      "Index"
-                Value         "4"
+                Value         "3"
                 Show          on
               }
               Parameter {
@@ -3120,7 +3103,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 627]
+                Location      [0, 26; 1280, 626]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -3938,7 +3921,7 @@ Plecs {
                 Direction     left
               }
               Schematic {
-                Location      [0, 26; 1280, 621]
+                Location      [0, 26; 1280, 618]
                 ZoomFactor    1.49863
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -4480,7 +4463,7 @@ Plecs {
               LabelPosition south
               Parameter {
                 Variable      "Index"
-                Value         "5"
+                Value         "4"
                 Show          on
               }
               Parameter {
@@ -4533,6 +4516,26 @@ Plecs {
                 Show          off
               }
             }
+            Component {
+              Type          Constant
+              Name          "Constant"
+              Show          on
+              Position      [290, 245]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-10, -10; 10, 10]
+              Parameter {
+                Variable      "Value"
+                Value         "p_o"
+                Show          off
+              }
+              Parameter {
+                Variable      "DataType"
+                Value         "10"
+                Show          off
+              }
+            }
             Connection {
               Type          Signal
               SrcComponent  "p"
@@ -4542,7 +4545,7 @@ Plecs {
             }
             Connection {
               Type          Signal
-              SrcComponent  "p_o"
+              SrcComponent  "Constant"
               SrcTerminal   1
               DstComponent  "Math1"
               DstTerminal   2
@@ -4667,6 +4670,25 @@ Plecs {
             } 
           }
         }
+        Component {
+          Type          Input
+          Name          "type"
+          Show          on
+          Position      [35, 120]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Product2"
@@ -4718,7 +4740,7 @@ Plecs {
           Branch {
             Points        [85, 100]
             DstComponent  "Pressure correction (Alkaline)"
-            DstTerminal   4
+            DstTerminal   3
           }
         }
         Connection {
@@ -4732,7 +4754,7 @@ Plecs {
         Connection {
           Type          Signal
           SrcComponent  "Pressure correction (Alkaline)"
-          SrcTerminal   3
+          SrcTerminal   2
           DstComponent  "Math"
           DstTerminal   2
         }
@@ -4742,6 +4764,13 @@ Plecs {
           SrcTerminal   1
           DstComponent  "Product2"
           DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "type"
+          SrcTerminal   1
+          DstComponent  "Pressure correction (Alkaline)"
+          DstTerminal   4
         }
         Annotation {
           Name          "<html><body>\n<p align=\"center\"><span style=\" font"
@@ -4786,7 +4815,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [0, 26; 1280, 626]
+        Location      [0, 26; 1280, 621]
         ZoomFactor    1.96257
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -4856,7 +4885,7 @@ Plecs {
             Direction     right
           }
           Schematic {
-            Location      [0, 26; 1280, 636]
+            Location      [0, 26; 1280, 634]
             ZoomFactor    1.49863
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -5291,7 +5320,7 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [0, 26; 1280, 623]
+        Location      [0, 26; 1280, 619]
         ZoomFactor    1.49863
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -5385,7 +5414,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 26; 1280, 633]
+            Location      [0, 26; 1280, 630]
             ZoomFactor    1.14437
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -5943,7 +5972,7 @@ Plecs {
             Direction     right
           }
           Schematic {
-            Location      [0, 26; 1280, 633]
+            Location      [0, 26; 1280, 632]
             ZoomFactor    1
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -6013,7 +6042,7 @@ Plecs {
                 Direction     right
               }
               Schematic {
-                Location      [0, 26; 1280, 636]
+                Location      [0, 26; 1280, 635]
                 ZoomFactor    1.30957
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -7184,7 +7213,7 @@ Plecs {
       Type          CurrentSource
       Name          "I_act_c"
       Show          on
-      Position      [300, 175]
+      Position      [305, 175]
       Direction     left
       Flipped       on
       LabelPosition south
@@ -7509,39 +7538,15 @@ Plecs {
     }
     Component {
       Type          Input
-      Name          "p_c"
+      Name          "p"
       Show          on
-      Position      [525, 10]
+      Position      [520, 30]
       Direction     right
       Flipped       off
       LabelPosition south
       Parameter {
         Variable      "Index"
         Value         "2"
-        Show          on
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-      Parameter {
-        Variable      "Width"
-        Value         "-1"
-        Show          off
-      }
-    }
-    Component {
-      Type          Input
-      Name          "p_a"
-      Show          on
-      Position      [525, 40]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Index"
-        Value         "3"
         Show          on
       }
       Parameter {
@@ -9412,6 +9417,30 @@ Plecs {
         }
       }
     }
+    Component {
+      Type          Input
+      Name          "type"
+      Show          on
+      Position      [520, 70]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "3"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "R_ohm"
@@ -9580,7 +9609,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From5"
       SrcTerminal   1
-      Points        [300, 140]
+      Points        [305, 140]
       DstComponent  "I_act_c"
       DstTerminal   3
     }
@@ -9593,17 +9622,10 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "p_c"
+      SrcComponent  "p"
       SrcTerminal   1
-      Points        [565, 10; 565, 30]
       DstComponent  "Reversible or open circuit voltage"
       DstTerminal   3
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "p_a"
-      SrcTerminal   1
-      Points        [640, 40]
     }
     Connection {
       Type          Signal
@@ -9641,6 +9663,14 @@ Plecs {
       SrcTerminal   3
       DstComponent  "Goto5"
       DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "type"
+      SrcTerminal   1
+      Points        [560, 70; 560, 40]
+      DstComponent  "Reversible or open circuit voltage"
+      DstTerminal   4
     }
     Annotation {
       Name          "<html><body>\n<p align=\"center\"><span style=\" font-siz"
