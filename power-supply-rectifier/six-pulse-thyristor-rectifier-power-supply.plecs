@@ -73,8 +73,8 @@ Plecs {
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAJYAAAACAAAAlgAAAAEAAACWAAAACQAAAJYAAAAIAAAAlgAAAAcAAACWAAAABgAAAJYAAAAFAA"
-"AAlgAAAAQAAACWAAAAjAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAABXAAA"
+"QAAAJYAAAADAAAAlgAAAAIAAACWAAAABQAAAJYAAAAEAAAAlgAAAAcAAACWAAAABgAAAJYAAAAJAA"
+"AAlgAAAAgAAACWAAAAjAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAABXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AA1AAAAAQAAAAAAAAPoAAAAADU="
@@ -229,7 +229,7 @@ Plecs {
       Type          Scope
       Name          "Output DC current \nand voltage"
       Show          on
-      Position      [875, 125]
+      Position      [875, 115]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -241,11 +241,12 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALcAMAAAAFAAAAC"
-"AAAAJYAAAAGAAAAlgAAAAUAAACWAAAABAAAAJYAAAAJAAAAlgAAB2YAAAALAQAAAQAAAAAAAAAAAA"
-"AAAJb/////AAAAgQAAAAAAAAALAAAA9gAAAAEAAAAAAAAAlgAAAAEAAAAAAAAAlgAAAAEAAAAAAAA"
-"AlgAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAlgAAAAEAAAAA"
-"AAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAEGAAAAAEAAAAAAAAD6AAAAAA1"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAJYAAAADAAAAlgAAAAIAAACWAAAABQAAAJYAAAAEAAAAlgAAAAcAAACWAAAABgAAAJYAAAAJAA"
+"AAlgAAAAgAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAD2AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AZwAAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "=="
@@ -253,7 +254,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -458,7 +459,7 @@ Plecs {
       Type          Step
       Name          "Step"
       Show          on
-      Position      [360, 265]
+      Position      [390, 275]
       Direction     left
       Flipped       off
       LabelPosition south
@@ -534,7 +535,7 @@ Plecs {
       Type          From
       Name          "From6"
       Show          off
-      Position      [755, 125]
+      Position      [755, 115]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1236,7 +1237,7 @@ Plecs {
           Type          Input
           Name          "u_g_abc"
           Show          on
-          Position      [80, 130]
+          Position      [50, 130]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1274,7 +1275,7 @@ Plecs {
           Type          Input
           Name          "I_d"
           Show          on
-          Position      [80, 265]
+          Position      [50, 265]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1662,7 +1663,7 @@ Plecs {
           Type          Input
           Name          "I_d_ref"
           Show          on
-          Position      [80, 195]
+          Position      [50, 195]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1722,7 +1723,7 @@ Plecs {
           Type          Input
           Name          "enable signal"
           Show          on
-          Position      [85, 75]
+          Position      [50, 75]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1997,13 +1998,33 @@ Plecs {
             Show          off
           }
         }
-        Connection {
-          Type          Signal
-          SrcComponent  "I_d"
-          SrcTerminal   1
-          Points        [120, 265; 120, 240]
-          DstComponent  "Current contoller"
-          DstTerminal   1
+        Component {
+          Type          ZeroOrderHold
+          Name          "Zero-Order\nHold"
+          Show          off
+          Position      [135, 130]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Ts"
+            Value         "T_s"
+            Show          off
+          }
+        }
+        Component {
+          Type          ZeroOrderHold
+          Name          "Zero-Order\nHold1"
+          Show          off
+          Position      [95, 265]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Ts"
+            Value         "T_s"
+            Show          off
+          }
         }
         Connection {
           Type          Signal
@@ -2030,13 +2051,6 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "u_g_abc"
-          SrcTerminal   1
-          DstComponent  "PLL (C-script)"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "PLL (C-script)"
           SrcTerminal   2
           DstComponent  "6-Pulse\nGenerator"
@@ -2057,6 +2071,35 @@ Plecs {
             DstTerminal   1
           }
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "u_g_abc"
+          SrcTerminal   1
+          DstComponent  "Zero-Order\nHold"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Zero-Order\nHold"
+          SrcTerminal   2
+          DstComponent  "PLL (C-script)"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "I_d"
+          SrcTerminal   1
+          DstComponent  "Zero-Order\nHold1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Zero-Order\nHold1"
+          SrcTerminal   2
+          Points        [120, 265; 120, 240]
+          DstComponent  "Current contoller"
+          DstTerminal   1
+        }
         Annotation {
           Name          base64 "PGh0bWw+PGJvZHk+CjxwPs6xPC9wPjwvYm9keT48L2h0bW"
 "w+"
@@ -2068,7 +2111,7 @@ Plecs {
       Type          Lookup1D
       Name          "1D-Table"
       Show          on
-      Position      [435, 315]
+      Position      [350, 315]
       Direction     left
       Flipped       off
       LabelPosition south
@@ -2079,7 +2122,7 @@ Plecs {
       }
       Parameter {
         Variable      "f(x)"
-        Value         "[0 0 5000 5000 5000]"
+        Value         "[0 0 5e3 5e3 5e3]"
         Show          off
       }
       Parameter {
@@ -2092,7 +2135,7 @@ Plecs {
       Type          Clock
       Name          "Clock"
       Show          on
-      Position      [505, 315]
+      Position      [425, 315]
       Direction     left
       Flipped       off
       LabelPosition south
@@ -2177,7 +2220,7 @@ Plecs {
       Type          From
       Name          "From14"
       Show          off
-      Position      [755, 160]
+      Position      [755, 140]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2476,7 +2519,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Step"
       SrcTerminal   1
-      Points        [325, 265; 325, 295]
+      Points        [325, 275; 325, 295]
       DstComponent  "Current controller and pulse generator"
       DstTerminal   5
     }
@@ -2500,7 +2543,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Mux"
       SrcTerminal   1
-      Points        [835, 70; 835, 115]
+      Points        [835, 70; 835, 105]
       DstComponent  "Output DC current \nand voltage"
       DstTerminal   1
     }
@@ -2515,7 +2558,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From14"
       SrcTerminal   1
-      Points        [805, 160; 805, 135]
+      Points        [805, 140; 805, 125]
       DstComponent  "Output DC current \nand voltage"
       DstTerminal   3
     }

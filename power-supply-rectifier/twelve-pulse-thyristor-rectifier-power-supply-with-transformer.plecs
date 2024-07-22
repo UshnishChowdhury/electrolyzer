@@ -433,12 +433,11 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAJYAAAAIAAAAlgAAAAkAAACWAAAAAgAAAJYAAAADAAAAlgAAAAEAAACWAAAABgAAAJYAAAAHAA"
-"AAlgAAAAQAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAD2AAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AZwAAAAAQAAAAAAAAPoAAAAADU="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL8AMAAAAGAAAAC"
+"QAAAJYAAAAGAAAAlgAAAAcAAACWAAAABAAAAJYAAAAFAAAAlgAAAAgAAACWAAAHZgAAAAsBAAABAA"
+"AAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAD2AAAAAQAAAAAAAACWAAAAAQAAAAAAAACWAAA"
+"AAQAAAAAAAACWAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAASuAAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -563,9 +562,9 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"QAAAJYAAAACAAAAlgAAAAMAAACWAAAABAAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAA"
-"AAlgAAAAkAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEqAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAJYAAAAGAAAAlgAAAAcAAACWAAAABAAAAJYAAAAFAAAAlgAAAAIAAACWAAAAAwAAAJYAAAABAA"
+"AAlgAAAAgAAACWAAAHZgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAEqAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AY8AAAAAQAAAAAAAAPoAAAAADU="
@@ -1576,7 +1575,7 @@ Plecs {
         Direction     right
       }
       Schematic {
-        Location      [-47, 105; 1233, 713]
+        Location      [0, 23; 1280, 634]
         ZoomFactor    1.49863
         SliderPosition [0, 30]
         ShowBrowser   off
@@ -1585,7 +1584,7 @@ Plecs {
           Type          Input
           Name          "u_g_abc"
           Show          on
-          Position      [90, 95]
+          Position      [50, 95]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -1623,7 +1622,7 @@ Plecs {
           Type          Input
           Name          "I_d"
           Show          on
-          Position      [85, 275]
+          Position      [50, 270]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2011,7 +2010,7 @@ Plecs {
           Type          Input
           Name          "I_d_ref"
           Show          on
-          Position      [85, 190]
+          Position      [55, 185]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2030,7 +2029,7 @@ Plecs {
           Type          Input
           Name          "enable signal"
           Show          on
-          Position      [95, 20]
+          Position      [55, 20]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -2431,28 +2430,41 @@ Plecs {
             }
           }
         }
-        Connection {
-          Type          Signal
-          SrcComponent  "I_d"
-          SrcTerminal   1
-          Points        [120, 275; 120, 245]
-          DstComponent  "Current controller"
-          DstTerminal   1
+        Component {
+          Type          ZeroOrderHold
+          Name          "Zero-Order\nHold"
+          Show          off
+          Position      [115, 95]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Ts"
+            Value         "T_s"
+            Show          off
+          }
+        }
+        Component {
+          Type          ZeroOrderHold
+          Name          "Zero-Order\nHold1"
+          Show          off
+          Position      [95, 270]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Ts"
+            Value         "T_s"
+            Show          off
+          }
         }
         Connection {
           Type          Signal
           SrcComponent  "I_d_ref"
           SrcTerminal   1
-          Points        [120, 190; 120, 225]
+          Points        [120, 185; 120, 225]
           DstComponent  "Current controller"
           DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "u_g_abc"
-          SrcTerminal   1
-          DstComponent  "PLL (C-script)"
-          DstTerminal   1
         }
         Connection {
           Type          Signal
@@ -2528,6 +2540,35 @@ Plecs {
             DstComponent  "Sum1"
             DstTerminal   2
           }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "u_g_abc"
+          SrcTerminal   1
+          DstComponent  "Zero-Order\nHold"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Zero-Order\nHold"
+          SrcTerminal   2
+          DstComponent  "PLL (C-script)"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "I_d"
+          SrcTerminal   1
+          DstComponent  "Zero-Order\nHold1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Zero-Order\nHold1"
+          SrcTerminal   2
+          Points        [120, 270; 120, 245]
+          DstComponent  "Current controller"
+          DstTerminal   1
         }
         Annotation {
           Name          base64 "PGh0bWw+PGJvZHk+CjxwPs6xPC9wPjwvYm9keT48L2h0bW"
