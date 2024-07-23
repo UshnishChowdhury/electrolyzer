@@ -1,5 +1,5 @@
 Plecs {
-  Name          "electrolyzer-electrical-model-pem"
+  Name          "electrolyzer-electrical-model-pem-Puranen"
   Version       "4.7"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -65,8 +65,8 @@ Plecs {
     Index         "3"
   }
   Schematic {
-    Location      [-1920, 103; -959, 1190]
-    ZoomFactor    2.2459
+    Location      [0, 23; 1280, 634]
+    ZoomFactor    1.30957
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
@@ -74,10 +74,11 @@ Plecs {
       Type          Subsystem
       Name          "Reversible or open circuit voltage"
       Show          on
-      Position      [675, 50]
+      Position      [725, 60]
       Direction     up
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
@@ -4572,10 +4573,11 @@ Plecs {
       Type          Subsystem
       Name          "Ohmic losses"
       Show          on
-      Position      [675, 150]
+      Position      [725, 160]
       Direction     up
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
@@ -5072,10 +5074,11 @@ Plecs {
       Type          Subsystem
       Name          "Activation anode"
       Show          on
-      Position      [675, 250]
+      Position      [725, 260]
       Direction     up
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
@@ -7068,10 +7071,11 @@ Plecs {
       Type          Goto
       Name          "Goto"
       Show          off
-      Position      [750, 40]
+      Position      [800, 50]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "U_rev"
@@ -7106,10 +7110,11 @@ Plecs {
       Type          Goto
       Name          "Goto1"
       Show          off
-      Position      [745, 165]
+      Position      [795, 175]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "R_ohm"
@@ -7144,7 +7149,7 @@ Plecs {
       Type          Input
       Name          "T"
       Show          on
-      Position      [520, 175]
+      Position      [555, 130]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -7206,10 +7211,11 @@ Plecs {
       Type          From
       Name          "From2"
       Show          off
-      Position      [620, 240]
+      Position      [670, 250]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "U_act_a"
@@ -7225,10 +7231,11 @@ Plecs {
       Type          From
       Name          "From3"
       Show          off
-      Position      [615, 355]
+      Position      [665, 365]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "U_act_c"
@@ -7244,10 +7251,11 @@ Plecs {
       Type          Goto
       Name          "Goto4"
       Show          off
-      Position      [745, 230]
+      Position      [795, 240]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "I_act_a"
@@ -7263,10 +7271,11 @@ Plecs {
       Type          Goto
       Name          "Goto5"
       Show          off
-      Position      [750, 345]
+      Position      [800, 355]
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "I_act_c"
@@ -7320,7 +7329,7 @@ Plecs {
       Type          Input
       Name          "p_c"
       Show          on
-      Position      [525, 10]
+      Position      [575, 20]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -7344,7 +7353,7 @@ Plecs {
       Type          Input
       Name          "p_a"
       Show          on
-      Position      [525, 40]
+      Position      [575, 50]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -7368,10 +7377,11 @@ Plecs {
       Type          Subsystem
       Name          "Activation cathode"
       Show          on
-      Position      [675, 365]
+      Position      [725, 375]
       Direction     up
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-35, -30; 35, 30]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
@@ -9235,6 +9245,210 @@ Plecs {
         Show          off
       }
     }
+    Component {
+      Type          Subsystem
+      Name          "Subsystem"
+      Show          on
+      Position      [565, 215]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-25, -15; 25, 15]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-25, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [29, 0]
+        Direction     right
+      }
+      Schematic {
+        Location      [0, 23; 1280, 634]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "T"
+          Show          on
+          Position      [60, 80]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "Out1"
+          Show          on
+          Position      [240, 80]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          CScript
+          Name          "C-Script"
+          Show          on
+          Position      [145, 80]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[640 346 623 360]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#import <math.h>\n"
+"\n"
+"#define T InputSignal(0,0)\n"
+"\n"
+"static int n_e;\n"
+"static double F;\n"
+"\n"
+"double U_o;\n"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         "n_e = ParamRealData(0,0);\n"
+"F = ParamRealData(0,1);"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "//Standard reversible voltage\n"
+"U_o = ((-159.6)*T + 2.8472*pow(10, 5))/(n_e*F);"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "StoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "RestoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "T"
+          SrcTerminal   1
+          DstComponent  "C-Script"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "C-Script"
+          SrcTerminal   2
+          DstComponent  "Out1"
+          DstTerminal   1
+        }
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "R_ohm"
@@ -9406,7 +9620,7 @@ Plecs {
       Type          Signal
       SrcComponent  "p_c"
       SrcTerminal   1
-      Points        [565, 10; 565, 30]
+      Points        [615, 20; 615, 40]
       DstComponent  "Reversible or open circuit voltage"
       DstTerminal   3
     }
@@ -9419,32 +9633,28 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "T"
-      SrcTerminal   1
-      Points        [575, 175]
+      Points        [625, 140]
       Branch {
-        Points        [575, 130]
-        Branch {
-          Points        [575, 65]
-          DstComponent  "Reversible or open circuit voltage"
-          DstTerminal   2
-        }
-        Branch {
-          DstComponent  "Ohmic losses"
-          DstTerminal   2
-        }
+        Points        [625, 75]
+        DstComponent  "Reversible or open circuit voltage"
+        DstTerminal   2
       }
       Branch {
-        Points        [575, 230]
-        Branch {
-          DstComponent  "Activation anode"
-          DstTerminal   1
-        }
-        Branch {
-          Points        [575, 345]
-          DstComponent  "Activation cathode"
-          DstTerminal   1
-        }
+        DstComponent  "Ohmic losses"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Signal
+      Points        [625, 240]
+      Branch {
+        DstComponent  "Activation anode"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [625, 355]
+        DstComponent  "Activation cathode"
+        DstTerminal   1
       }
     }
     Connection {
